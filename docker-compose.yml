@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres
+    container_name: cf-container
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: crediflow
+    ports:
+      - "5435:5432"
+    volumes:
+      - crediflow-data:/var/lib/postgresql/data
+
+volumes:
+  crediflow-data:
