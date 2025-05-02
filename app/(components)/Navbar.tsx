@@ -25,7 +25,7 @@ export default function ResponsiveNavbar() {
           <li><a href="#prestamos" className="hover:text-primary">Servicios</a></li>
           <li><a href="#clientes" className="hover:text-primary">Precios</a></li>
           <li><a href="#contacto" className="hover:text-primary">Contacto</a></li>
-          <li><a href="" className="block hover:text-primary">Login</a></li>
+          <li><Link href="/login" className="block hover:text-primary">Login</Link></li>
         </ul>
       </div>
 
@@ -36,7 +36,7 @@ export default function ResponsiveNavbar() {
           <li><a href="#prestamos" className="block hover:text-primary">Servicios</a></li>
           <li><a href="#clientes" className="block hover:text-primary">Precios</a></li>
           <li><a href="#contacto" className="block hover:text-primary">Contacto</a></li>
-          <li><a href="" className="block hover:text-primary">Login</a></li>
+          <li><Link href="/login" className="block hover:text-primary">Login</Link></li>
         </ul>
       )}
     </nav>
