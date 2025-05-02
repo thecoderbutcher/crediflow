@@ -11,3 +11,11 @@
     --color-warning: #FBBF24;
     --color-danger: #EF4444;
 }
+
+input {
+    @apply border border-gray-200 h-10 px-4 rounded-md text-sm focus:outline-none focus:border-gray-400;
+}
+
+button{
+    @apply cursor-pointer;
+}

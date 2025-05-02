@@ -1,9 +1,10 @@
-import AuthCardWrapper from "../(components)/AuthCardWrapper"
+import { AuthCardWrapper } from "../(components)/card-wrapper"
+import { LoginForm } from "./(components)/login-form"
 
 const page = () => {
   return (
-    <AuthCardWrapper headerLabel="Iniciar Sesión" backLabel="Volver" backLink="/">
-        login
+    <AuthCardWrapper headerLabel="Bienvenido" backLabel="Volver" backLink="/">
+        <LoginForm />
     </AuthCardWrapper>
   )
 }
