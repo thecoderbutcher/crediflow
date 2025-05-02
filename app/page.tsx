@@ -1,9 +1,20 @@
-import Image from "next/image";
+
+import Contact from "./(components)/Contact";
+import Footer from "./(components)/Footer";
+import Hero from "./(components)/Hero";
+import Navbar from "./(components)/Navbar";
+import Pricing from "./(components)/Pricing";
+import Services from "./(components)/Services";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center text-2xl justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      Helo
+    <div className="flex flex-1 flex-col min-h-screen">
+      <Navbar />
+      <Hero />
+      <Services />
+      <Pricing />
+      <Contact />
+      <Footer />
     </div>
   );
-}
+} 
