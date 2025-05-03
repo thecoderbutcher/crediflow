@@ -19,14 +19,14 @@ export const LoginForm = () => {
         }
     }); 
 
-    const onSubmit = (data: z.infer<typeof LoginSchema>) => {
+    const onSubmit = (value: z.infer<typeof LoginSchema>) => {
         setError('');
         setSuccess('');
 
         startTransition(() => {
             setError(" ");
             setSuccess(" ");
-            console.log(data);
+            console.log(value);
         })
     }
     return (  
