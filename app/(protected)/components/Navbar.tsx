@@ -6,7 +6,14 @@ import { FaMoneyCheckDollar } from "react-icons/fa6";
 const Navbar = () => {
     return (
     <nav className="fixed bottom-0 p-4 bg-gray-300 rounded-t-xl w-full text-3xl">
-
+        {/* Desktop Menu */}
+        <ul className="hidden lg:flex gap-12 w-full justify-center">
+            <li>
+                <Link href="/dashboard">
+                    <MdDashboard />
+                </Link>
+            </li>
+        </ul>
         {/* Mobile Menu */}
         <ul className="flex gap-12 w-full justify-center lg:hidden">
             <li>
