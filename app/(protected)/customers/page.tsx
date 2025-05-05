@@ -4,7 +4,7 @@ import Topbar from "./components/Topbar"
 const page = () => {
     return (
       <div className="flex flex-col">
-        <Header title="Clientes" />
+        <Header title="Clientes" url="/dashboard"/>
         <Topbar />
       </div>
     )
