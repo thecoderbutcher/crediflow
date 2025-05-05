@@ -1,7 +1,7 @@
 import { auth } from "@/auth"
 
-const page = () => {
-    const session =  auth()
+const page = async () => {
+    const session = await auth()
     return (
         <div>
             {JSON.stringify(session)}
