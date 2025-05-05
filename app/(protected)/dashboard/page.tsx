@@ -1,10 +1,9 @@
-import { auth } from "@/auth"
+import Header from "../components/Header"
 
 const page = async () => {
-    const session = await auth()
     return (
         <div>
-            {JSON.stringify(session)}
+            <Header title="Dashboard" />
         </div>
     )
 }
