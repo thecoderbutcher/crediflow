@@ -1,4 +1,6 @@
 import Header from "../components/Header"
+import FilterStatus from "./components/FilterStatus"
+import ListCustomer from "./components/ListCustomer"
 import Topbar from "./components/Topbar"
 
 const page = () => {
@@ -6,6 +8,8 @@ const page = () => {
       <div className="flex flex-col">
         <Header title="Clientes" url="/dashboard"/>
         <Topbar />
+        <FilterStatus />
+        <ListCustomer />
       </div>
     )
   }
