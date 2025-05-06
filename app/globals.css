@@ -12,6 +12,9 @@
     --color-danger: #EF4444;
 }
 
+body{
+    @apply bg-secondary/20 text-secondary/80;
+}
 input {
     @apply border border-gray-200 h-10 px-4 rounded-md text-sm focus:outline-none focus:border-gray-400;
 }
@@ -19,3 +22,4 @@ input {
 button{
     @apply cursor-pointer;
 }
+

@@ -12,10 +12,9 @@ const Topbar = () => {
     const [isAlphaFilter, setIsAlphaFilter] = useState(false);
 
     return (
-        <ul className="flex gap-1 items-center justify-center text-2xl mt-2 text-secondary/80">
+        <ul className="flex gap-1 items-center justify-center text-2xl mt-2">
             <li className="bg-darkText border border-primary/50 shadow-md px-2 py-2 rounded-md">
-                <Link href="/customers/create
-                ">
+                <Link href="/customers/create">
                     <FaUserPlus />
                 </Link>
             </li>

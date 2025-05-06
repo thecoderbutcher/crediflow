@@ -7,7 +7,7 @@ import ListQuotas from './components/ListQuotas'
 const page = () => {
   return (
     <div className='flex flex-col'>
-        <Header title="Cuotas: loan_id" url="/pageloans" /> 
+        <Header title="Cuotas: loan_id" url="/loans" /> 
         <TopInfo /> 
         <FilterQuota />
         <ListQuotas />

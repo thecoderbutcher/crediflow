@@ -18,8 +18,8 @@ const ProgressPayments = () => {
       </div>
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-2">
-          <p className="text-4xl font-semibold">$000</p>
-          <p className="text-base font-light">de $000</p>
+          <p className="text-4xl font-semibold">$0</p>
+          <p className="text-base font-light">de $0</p>
         </div> 
         <div className="w-full max-w-md">
           <div className="mb-2 text-sm text-gray-700 flex justify-between">

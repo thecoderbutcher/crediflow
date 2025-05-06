@@ -61,3 +61,17 @@ model PasswordResetToken {
 
   @@unique([email, token])
 }
+
+model Customer {
+  id         String   @id @default(uuid())
+  firstName  String
+  lastName   String
+  address    String
+  phone      String
+  notes      String?
+  statusPay  Boolean
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("customers")
+}

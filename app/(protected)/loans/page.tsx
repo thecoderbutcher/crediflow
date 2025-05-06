@@ -1,9 +1,11 @@
 import Header from "../components/Header"
+import Topbar from "./components/Topbar"
 
 const page = () => {
     return (
-      <div>
+      <div className="flex flex-col w-full">
         <Header title="Prestamos" />
+        <Topbar />
       </div>
     )
   }

@@ -4,7 +4,7 @@ import { GiReceiveMoney } from "react-icons/gi";
 
 const FormCreateLoan = () => {
   return (
-    <form className="flex flex-col gap-6 px-4 py-8 text-secondary/80 bg-darkText shadow-md">
+    <form className="flex flex-col gap-6 px-4 py-8   bg-darkText shadow-md">
         <div className="flex relative items-center px-2 py-1 bg-darkText text-text/90 shadow-md border border-primary/40 rounded-md">
             <label htmlFor="typeinteres" className="absolute left-2 -top-3 bg-darkText px-1 text-sm">Tipo de interes</label>
             <select name="typeinteres" className="w-full outline-none focus:outline-none active:outline-none border-none py-2" id="typeinteres"> 

@@ -5,7 +5,7 @@ import { FaMoneyCheckDollar } from "react-icons/fa6";
 
 const Navbar = () => {
     return (
-    <nav className="fixed bottom-0 p-4 bg-light text-secondary/80text-base rounded-t-xl w-full text-3xl">
+    <nav className="fixed bottom-0 p-4 bg-light rounded-t-xl w-full text-3xl">
         {/* Desktop Menu */}
         <ul className="hidden lg:flex gap-12 w-full justify-center">
             <li>

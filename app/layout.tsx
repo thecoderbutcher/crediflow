@@ -17,10 +17,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${robotoCondensed.variable} antialiased`}
-      >
+    <html lang="es">
+      <body className={`${robotoCondensed.variable} antialiased`}>
         {children}
       </body>
     </html>

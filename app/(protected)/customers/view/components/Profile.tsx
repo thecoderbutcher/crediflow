@@ -21,7 +21,7 @@ const Profile = () => {
             </div>
             <div className="flex gap-4 flex-col text-xl">
                 <div className="bg-darkText border border-secondary p-1 rounded-md shadow-md">
-                    <MdModeEdit className="text-secondary/80"/>
+                    <MdModeEdit className=" "/>
                 </div>
                 <div className="bg-darkText border border-secondary p-1 rounded-md shadow-md">
                     <MdBlock className="text-danger/80"/>
