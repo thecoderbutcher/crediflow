@@ -29,7 +29,7 @@ const Profile = () => {
             </div>
         </div>
         <div className="flex items-center justify-center gap-10">
-            <Link href={'/admin/loans/add'} className="flex items-center bg-primary gap-1 text-darkText border border-primary px-2 py-1 rounded-lg shadow-md">
+            <Link href={'/loans/create'} className="flex items-center bg-primary gap-1 text-darkText border border-primary px-2 py-1 rounded-lg shadow-md">
                 <FaMoneyBillTransfer className="text-2xl"/>
                 <p>Agregar prestamo</p>
             </Link>
