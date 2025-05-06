@@ -23,6 +23,7 @@ model User {
   password      String?
   role          UserRole  @default(USER)
   accounts      Account[]
+  customer Customer[]
 }
 
 model Account {
@@ -66,12 +67,16 @@ model Customer {
   id         String   @id @default(uuid())
   firstName  String
   lastName   String
+  email      String
+  idperson   String
   address    String
   phone      String
   notes      String?
-  statusPay  Boolean
+  statusPay  Boolean? 
+  employeeId String
+  employee   User @relation(fields: [employeeId], references: [id])
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 
-  @@map("customers")
+  @@map("Customers")
 }

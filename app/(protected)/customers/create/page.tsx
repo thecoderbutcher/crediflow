@@ -1,13 +1,13 @@
 
 import Header from '../../components/Header'
-import AddClientForm from './(components)/AddClientForm'
+import FormCreateCustomer from './components/FormCreateCustomer'
 
 const page = () => {
 
     return (    
-        <div className='flex flex-col justify-center'>
+        <div className='flex flex-col w-full'>
             <Header title="Agregar Cliente" url="/customers" />
-            <AddClientForm />
+            <FormCreateCustomer />
         </div>
     )
 }

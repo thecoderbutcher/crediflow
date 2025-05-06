@@ -1,4 +1,5 @@
-import Link from "next/link";
+import FormGroup from "@/app/(protected)/components/FormGroup";
+import Link from "next/link"; 
 import { FaMoneyBillAlt,FaPercent, FaCalendarDay } from "react-icons/fa";
 import { GiReceiveMoney } from "react-icons/gi";
 
@@ -13,11 +14,14 @@ const FormCreateLoan = () => {
                 <option value="">Interes compuesto bancario</option>
             </select>
         </div>    
-        <div className="flex relative items-center px-2 py-1 bg-darkText text-text/90 shadow-md border border-primary/40 rounded-md group">
+        <FormGroup Icon={FaMoneyBillAlt} labelFor="laonvalue" labelText="Valor">
+            <input type="text" name="laonvalue" id="laonvalue" placeholder="Valor del prestamo" className=" w-full outline-none focus:outline-none active:outline-none border-none" />
+        </FormGroup>
+        {/* <div className="flex relative items-center px-2 py-1 bg-darkText text-text/90 shadow-md border border-primary/40 rounded-md group">
             <label htmlFor="laonvalue" className="absolute left-2 -top-3 bg-darkText px-1 text-sm">Valor</label>
             <input type="text" name="laonvalue" id="laonvalue" placeholder="Valor del prestamo" className=" w-full outline-none focus:outline-none active:outline-none border-none" />
             <FaMoneyBillAlt className="text-4xl" />
-        </div>    
+        </div>    */} 
         <div className="flex relative items-center px-2 py-1 bg-darkText text-text/90 shadow-md border border-primary/40 rounded-md group">
             <label htmlFor=""  className="absolute left-2 -top-3 bg-darkText px-1 text-sm">Intereses</label>
             <input type="text" placeholder="" className=" w-full outline-none focus:outline-none active:outline-none border-none" />
