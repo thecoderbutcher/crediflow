@@ -1,8 +1,14 @@
-
-
-const LogoutButton = () => {
+import { signOut } from "@/auth"
+const LogoutButton = async () => { 
   return (
-    <div>logout-button</div>
+    <form 
+      action={async () => {
+        "use server"
+        await signOut();
+      }}
+    >
+      <button type="submit">Logout</button> 
+    </form>
   )
 }
 

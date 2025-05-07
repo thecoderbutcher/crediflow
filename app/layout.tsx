@@ -7,8 +7,8 @@ const robotoCondensed = Roboto_Condensed({
 }) 
 
 export const metadata: Metadata = {
-  title: "MCD Detailing",
-  description: "Detailing de autos a mano",
+  title: "app name",
+  description: "app description",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
