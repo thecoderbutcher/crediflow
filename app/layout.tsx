@@ -11,11 +11,7 @@ export const metadata: Metadata = {
   description: "Detailing de autos a mano",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
   return (
     <html lang="es">
       <body className={`${robotoCondensed.variable} antialiased`}>

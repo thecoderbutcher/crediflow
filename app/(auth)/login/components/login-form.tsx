@@ -6,7 +6,7 @@ import { LoginSchema } from "@/schema";
 import { FormSuccess } from "../../components/form-success";
 import { FormError } from "../../components/form-error";
 import { useState, useTransition } from "react";
-import { login } from "../actions/login";
+import { login } from "../action/login";
 export const LoginForm = () => {
     const [error, setError] = useState<string | undefined>('');
     const [success, setSuccess] = useState<string | undefined>('');
