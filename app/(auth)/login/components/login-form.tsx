@@ -6,8 +6,11 @@ import { LoginSchema } from "@/schema";
 import { FormSuccess } from "../../components/form-success";
 import { FormError } from "../../components/form-error";
 import { useState, useTransition } from "react";
+import { useSearchParams } from "next/navigation";
 import { login } from "../action/login";
 export const LoginForm = () => {
+    const searchParams = useSearchParams();
+    const urlError = searchParams.get('error') === "OAuthAccountNotLinked" ? 'El email está asociado a otra cuenta' : '';
     const [error, setError] = useState<string | undefined>('');
     const [success, setSuccess] = useState<string | undefined>('');
     const [isPending, startTransition] = useTransition();
@@ -62,7 +65,7 @@ export const LoginForm = () => {
                 <button className="w-full bg-primary text-white py-2 rounded-md">Iniciar Sesión</button>
             </div>
             <FormSuccess message={success} />
-            <FormError message={error} />
+            <FormError message={error || urlError} />
         </form> 
     )
 };
