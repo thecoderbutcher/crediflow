@@ -36,7 +36,7 @@ const RegisterForm = () => {
     })
   }
   return (
-    <AuthCardWrapper headerLabel="Crear una nueva cuenta" backLabel="Volver" backLink="/">
+    <AuthCardWrapper headerLabel="Crear una cuenta nueva" backLabel="Volver" backLink="/" social={false}>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
         <div className="flex flex-col gap-2">
           <label htmlFor="name">Nombre</label>
