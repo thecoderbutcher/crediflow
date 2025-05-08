@@ -6,7 +6,7 @@ import { AuthCardWrapper } from "../../components/card-wrapper"
 import { FormError } from "../../components/form-error"
 import { FormSuccess } from "../../components/form-success"
 import { useState, useTransition } from "react"
-import { register as registerAction } from "../actions/register"
+import { register as registerAction } from "../action/register"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 
