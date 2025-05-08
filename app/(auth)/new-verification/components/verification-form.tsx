@@ -1,7 +1,10 @@
 'use client'
 import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react"
-import { newVerification } from "../action/newverification";
+import { newVerification } from "../action/new-verification";
+import { BeatLoader } from "react-spinners";
+import { FormSuccess } from "../../components/form-success";
+import { FormError } from "../../components/form-error";
 
 
 const VerificationForm = () => {
@@ -19,35 +22,21 @@ const VerificationForm = () => {
         }
         newVerification(token)
             .then((data) => {
-                setError(data?.error);
                 setSuccess(data?.success);
+                setError(data?.error);
             })
             .catch(() => {
                 setError("Algo salió mal!");
             })
     }, [token, success, error]);
 
-    useEffect(() => {
-        onSubmit();
-    }, [onSubmit]);
+    useEffect(() => { onSubmit(); }, [onSubmit]);
 
     return (
         <div className="flex w-full justify-center items-center">
-            {!success && !error && (
-                <div className="flex flex-col gap-2">
-                    <p>Verificando...</p>
-                </div>
-            )}
-            {success && (
-                <div className="flex flex-col gap-2">
-                    <p>{success}</p>
-                </div>
-            )}
-            {error && (
-                <div className="flex flex-col gap-2">
-                    <p>{error}</p>
-                </div>
-            )}
+            {!success && !error && (<BeatLoader />)}
+            <FormSuccess message={success}/>
+            {!success && error && (<FormError message={error}/>)}
         </div>
     )
 }

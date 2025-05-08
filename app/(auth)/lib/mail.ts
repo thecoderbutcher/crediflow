@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer'
 
 export const sendVerificationEmail = async (email: string, token: string) => {
-    const confirmLink = `http://localhost:3000/verify-email?token=${token}`;
+    const confirmLink = `http://localhost:3000/new-verification?token=${token}`;
     const {SMTP_EMAIL, SMTP_PASSWORD} = process.env;
 
     const trasporter = nodemailer.createTransport({
