@@ -11,6 +11,18 @@ export const RegisterSchema = z.object({
     password: z.string().min(8, {message: "Minimun 8 characters required"})
 })
 
+export const ResetSchema = z.object({
+    email: z.string().email({
+        message: "Email is required",
+    }),
+})
+
+export const NewPasswordSchema = z.object({
+    password: z.string().min(8,{
+        message: "Minimum 8 characters required",
+    }),
+})
+
 export const CustomerSchema = z.object({
     firstName: z.string().min(3, 'El nombre debe tener al menos 3 caracteres'),
     lastName: z.string().min(3, 'El apellido debe tener al menos 3 caracteres'),
