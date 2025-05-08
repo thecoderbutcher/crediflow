@@ -3,7 +3,7 @@ import { LoginForm } from "./components/login-form"
 
 const page = () => {
   return (
-    <AuthCardWrapper headerLabel="Bienvenido" backLabel="Volver" backLink="/">
+    <AuthCardWrapper headerLabel="Bienvenido" backLabel="Volver" backLink="/" social>
         <LoginForm />
     </AuthCardWrapper>
   )
