@@ -8,6 +8,7 @@ import { FormError } from "../../components/form-error";
 import { useState, useTransition } from "react";
 import { useSearchParams } from "next/navigation";
 import { login } from "../action/login";
+import Link from "next/link";
 
 export const LoginForm = () => {
     const searchParams = useSearchParams();
@@ -63,6 +64,9 @@ export const LoginForm = () => {
                 />
                 {errors.password && ( <p className="text-sm text-danger">{errors.password.message}</p> )} 
 
+            </div>
+            <div className="flex flex-col gap-2">
+                <Link href="/reset" className="text-secondary/70 text-[14px]">¿Olvidaste tu contraseña?</Link> 
             </div>
             <FormSuccess message={success} />
             <FormError message={error || urlError} />
