@@ -2,11 +2,10 @@
 
 import * as z from "zod"
 import { RegisterSchema } from "@/schema"
-import { AuthCardWrapper } from "../../components/card-wrapper"
 import { FormError } from "../../components/form-error"
 import { FormSuccess } from "../../components/form-success"
 import { useState, useTransition } from "react"
-import { register as registerAction } from "../actions/register"
+import { register as registerAction } from "../action/register"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 
@@ -35,55 +34,53 @@ const RegisterForm = () => {
       })
     })
   }
-  return (
-    <AuthCardWrapper headerLabel="Crear una nueva cuenta" backLabel="Volver" backLink="/">
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+  return ( 
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+      <div className="flex flex-col gap-2">
+        <label htmlFor="name">Nombre</label>
+        <input 
+          type="text" 
+          {...register("name")}
+          name="name"
+          disabled={isPending}
+          placeholder="John Doe" 
+        />
+        {errors.name && (<p className="text-sm text-danger">{errors.name.message}</p>)}
+      </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="name">Nombre</label>
-          <input 
-            type="text" 
-            {...register("name")}
-            name="name"
-            disabled={isPending}
-            placeholder="John Doe" 
-          />
-          {errors.name && (<p className="text-sm text-danger">{errors.name.message}</p>)}
+            <label htmlFor="email">Email</label>
+            <input 
+              type="email" 
+              {...register("email")}
+              name="email"
+              disabled={isPending}
+              placeholder="example@mail.com" 
+            />
+            {errors.email && (<p className="text-sm text-danger">{errors.email.message}</p>)}
         </div>
-          <div className="flex flex-col gap-2">
-              <label htmlFor="email">Email</label>
-              <input 
-                type="email" 
-                {...register("email")}
-                name="email"
-                disabled={isPending}
-                placeholder="example@mail.com" 
-              />
-              {errors.email && (<p className="text-sm text-danger">{errors.email.message}</p>)}
-          </div>
-          <div className="flex flex-col gap-2">
-              <label htmlFor="password">Contraseña</label>
-              <input 
-                type="password" 
-                {...register("password")}
-                disabled={isPending}
-                name="password" 
-                placeholder="********" 
-              />
-              {errors.password && (<p className="text-sm text-danger">{errors.password.message}</p>)}
-          </div> 
-          <div className="flex w-auto">
-              <button 
-                type="submit" 
-                className="bg-primary text-darkText w-full py-2 rounded-md"
-                disabled={isPending}
-              >
-                Crear Cuenta
-              </button>
-          </div>
-          <FormError message={error} />  
-          <FormSuccess message={success} />
-      </form>
-    </AuthCardWrapper>
+        <div className="flex flex-col gap-2">
+            <label htmlFor="password">Contraseña</label>
+            <input 
+              type="password" 
+              {...register("password")}
+              disabled={isPending}
+              name="password" 
+              placeholder="********" 
+            />
+            {errors.password && (<p className="text-sm text-danger">{errors.password.message}</p>)}
+        </div> 
+        <div className="flex w-auto">
+            <button 
+              type="submit" 
+              className="bg-primary text-darkText w-full py-2 rounded-md"
+              disabled={isPending}
+            >
+              Crear Cuenta
+            </button>
+        </div>
+        <FormError message={error} />  
+        <FormSuccess message={success} />
+    </form>
   )
 }
 
