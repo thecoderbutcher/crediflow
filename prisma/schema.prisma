@@ -64,7 +64,7 @@ model PasswordResetToken {
 }
 
 model Customer {
-  id         String   @id @default(uuid())
+  id String   @id @default(uuid())
   firstName  String
   lastName   String
   email      String
@@ -74,9 +74,43 @@ model Customer {
   notes      String?
   statusPay  Boolean? 
   employeeId String
+  loans     Loan[]
   employee   User @relation(fields: [employeeId], references: [id])
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 
   @@map("Customers")
+}
+
+model Loan {
+  id                String   @id @default(cuid())
+  amount            Float
+  customerId        String
+  customer          Customer @relation(fields: [customerId], references: [id])
+  loanTypeId        String
+  loanType          LoanType @relation(fields: [loanTypeId], references: [id])
+  paymentFrequencyId String
+  paymentFrequency  PaymentFrequency @relation(fields: [paymentFrequencyId], references: [id])
+  statusId          String
+  status            LoanStatus @relation(fields: [statusId], references: [id])
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model LoanType {
+  id   String @id @default(cuid())
+  name String @unique
+  loans Loan[]
+}
+
+model PaymentFrequency {
+  id   String @id @default(cuid())
+  name String @unique
+  loans Loan[]
+}
+
+model LoanStatus {
+  id   String @id @default(cuid())
+  name String @unique
+  loans Loan[]
 }
