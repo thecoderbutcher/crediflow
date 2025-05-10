@@ -3,7 +3,7 @@ import FormCreateLoan from "./(components)/FormCreateLoan"
 
 const page = () => {
   return (
-    <div>
+    <div className="flex flex-col h-screen">
         <Header title="Agregar prestamos" url="/loans" />
         <FormCreateLoan />
     </div>

@@ -12,7 +12,7 @@ import { createCustomer } from "../action/create";
 import { FormSuccess } from "@/app/(auth)/components/form-success";
 import { FormError } from "@/app/(auth)/components/form-error";
 import { getSession } from "next-auth/react";
-
+import { justNumbers } from "@/app/lib/utils";
 const FormCreateCustomer = () => {
     const [employeeId, setEmployeeId] = useState<string | undefined>();
 
@@ -81,6 +81,7 @@ const FormCreateCustomer = () => {
                     {...register('idperson')}
                     type="text" 
                     name='idperson' 
+                    onKeyDown={(event)=> justNumbers(event)}
                     placeholder='Ingresar numero de documento' 
                     className="flex w-full outline-none focus:outline-none border-none" 
                     disabled={isPending}
@@ -111,6 +112,7 @@ const FormCreateCustomer = () => {
                     {...register('phone')}
                     type="text" 
                     name='phone' 
+                    onKeyDown={(event)=> justNumbers(event)}
                     placeholder='Ingresar numero de telefono' 
                     className="flex w-full outline-none focus:outline-none border-none" 
                     disabled={isPending}

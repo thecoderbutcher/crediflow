@@ -1,7 +1,9 @@
+'use client'
 import FormGroup from "@/app/(protected)/components/FormGroup";
 import Link from "next/link"; 
 import { FaMoneyBillAlt,FaPercent, FaCalendarDay } from "react-icons/fa";
 import { GiReceiveMoney } from "react-icons/gi";
+import { justNumbers } from "@/app/lib/utils";
 
 const FormCreateLoan = () => {
   return (
@@ -15,7 +17,13 @@ const FormCreateLoan = () => {
             </select>
         </div>    
         <FormGroup Icon={FaMoneyBillAlt} labelFor="laonvalue" labelText="Valor">
-            <input type="text" name="laonvalue" id="laonvalue" placeholder="Valor del prestamo" className=" w-full outline-none focus:outline-none active:outline-none border-none" />
+            <input 
+                type="text" 
+                onKeyDown={(event)=> justNumbers(event)}
+                name="laonvalue" 
+                id="laonvalue" 
+                placeholder="Valor del prestamo" 
+                className=" w-full outline-none focus:outline-none active:outline-none border-none" />
         </FormGroup> 
         <div className="flex relative items-center px-2 py-1 bg-darkText text-text/90 shadow-md border border-primary/40 rounded-md group">
             <label htmlFor=""  className="absolute left-2 -top-3 bg-darkText px-1 text-sm">Intereses</label>
