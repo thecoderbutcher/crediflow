@@ -1,58 +1,58 @@
 'use client'
 import FormGroup from "@/app/(protected)/components/FormGroup";
 import Link from "next/link"; 
-import { FaMoneyBillAlt,FaPercent, FaCalendarDay } from "react-icons/fa";
-import { GiReceiveMoney } from "react-icons/gi";
-import { justNumbers } from "@/app/lib/utils";
+import { FaMoneyBillAlt,FaPercent, FaCalendarDay, FaStickyNote } from "react-icons/fa";
+import { GiReceiveMoney } from "react-icons/gi"; 
 
 const FormCreateLoan = () => {
   return (
-    <form className="flex flex-col gap-6 px-4 py-8   bg-darkText shadow-md">
-        <div className="flex relative items-center px-2 py-1 bg-darkText text-text/90 shadow-md border border-primary/40 rounded-md">
-            <label htmlFor="typeinteres" className="absolute left-2 -top-3 bg-darkText px-1 text-sm">Tipo de interes</label>
+    <form className="flex flex-col gap-6 px-4 py-8 bg-darkText shadow-md">
+        <FormGroup Icon={FaMoneyBillAlt} labelFor="typeinteres" labelText="Tipo de interes"> 
             <select name="typeinteres" className="w-full outline-none focus:outline-none active:outline-none border-none py-2" id="typeinteres"> 
                 <option value="">Interes al capital incial</option>
                 <option value="">Interes a cada cuota</option>
                 <option value="">Interes compuesto bancario</option>
-            </select>
-        </div>    
+            </select> 
+        </FormGroup>
         <FormGroup Icon={FaMoneyBillAlt} labelFor="laonvalue" labelText="Valor">
             <input 
-                type="text" 
-                onKeyDown={(event)=> justNumbers(event)}
+                type="number"  
                 name="laonvalue" 
                 id="laonvalue" 
                 placeholder="Valor del prestamo" 
                 className=" w-full outline-none focus:outline-none active:outline-none border-none" />
         </FormGroup> 
-        <div className="flex relative items-center px-2 py-1 bg-darkText text-text/90 shadow-md border border-primary/40 rounded-md group">
-            <label htmlFor=""  className="absolute left-2 -top-3 bg-darkText px-1 text-sm">Intereses</label>
-            <input type="text" placeholder="" className=" w-full outline-none focus:outline-none active:outline-none border-none" />
-            <FaPercent className="text-2xl" />
-        </div>    
-        <div className="flex relative items-center px-2 py-1 bg-darkText text-text/90 shadow-md border border-primary/40 rounded-md group">
-            <label htmlFor="" className="absolute left-2 -top-3 bg-darkText px-1 text-sm">Cuotas</label>
-            <input type="text" placeholder="Numero de coutas" className=" w-full outline-none focus:outline-none active:outline-none border-none" />
-            <GiReceiveMoney className="text-4xl" />
-        </div>    
-        <div className="flex relative items-center px-2 py-1 bg-darkText text-text/90 shadow-md border border-primary/40 rounded-md group">
-            <label htmlFor="" className="absolute left-2 -top-3 bg-darkText px-1 text-sm">Frecuencia del pago</label> 
+        <FormGroup Icon={FaPercent} labelFor="laonvalue" labelText="Intereses"> 
+            <input 
+                type="text" 
+                placeholder="Ingresar porcentaje de intereses" 
+                className=" w-full outline-none focus:outline-none active:outline-none border-none" 
+            />  
+        </FormGroup>
+        <FormGroup Icon={GiReceiveMoney} labelFor="laonvalue" labelText="Cuotas"> 
+            <input 
+                type="number" 
+                placeholder="Ingrese cantidad de coutas" 
+                className=" w-full outline-none focus:outline-none active:outline-none border-none" 
+            />  
+        </FormGroup>
+        <FormGroup Icon={FaMoneyBillAlt} labelFor="laonvalue" labelText="Frecuencia del pago"> 
             <select name="typeinteres" className="w-full outline-none focus:outline-none active:outline-none border-none py-2" id="typeinteres"> 
                 <option value="">Diario</option>
                 <option value="">Semanal</option>
                 <option value="">Quincenal</option>
                 <option value="">Mensual</option>
-            </select>
-        </div>    
-        <div className="flex relative items-center px-2 py-1 bg-darkText text-text/90 shadow-md border border-primary/40 rounded-md group">
-            <label htmlFor="" className="absolute left-2 -top-3 bg-darkText px-1 text-sm">Fecha del pago</label>
-            <input type="date"  className="w-full outline-none focus:outline-none active:outline-none border-none py-2" />
-            <FaCalendarDay className="text-2xl" />
-        </div>    
-        <div className="flex relative items-center px-2 py-1 bg-darkText text-text/90 shadow-md border border-primary/40 rounded-md group">
-            <label htmlFor="" className="absolute left-2 -top-3 bg-darkText px-1 text-sm">Notas</label>
-            <input type="text" placeholder="Notas" className=" w-full outline-none focus:outline-none active:outline-none border-none"/>
-        </div>
+            </select> 
+        </FormGroup>
+        <FormGroup Icon={FaCalendarDay} labelFor="laonvalue" labelText="Fecha del pago"> 
+            <input 
+                type="date"
+                placeholder="Ingresar fecha de pago"
+                className="w-full outline-none focus:outline-none active:outline-none border-none py-2" /> 
+        </FormGroup>
+        <FormGroup Icon={FaStickyNote} labelFor="laonvalue" labelText="Notas"> 
+            <input type="text" placeholder="Notas" className=" w-full outline-none focus:outline-none active:outline-none border-none"/> 
+        </FormGroup>
         <div className='flex w-full items-center gap-2  shadow-md'> 
             <Link href={'/auth/error'} className='bg-primary text-darkText py-2 w-full text-center rounded-md'>
                 Guardar

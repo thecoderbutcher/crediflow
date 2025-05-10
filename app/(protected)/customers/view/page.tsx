@@ -1,13 +1,11 @@
 
-import Header from "../../components/Header"
-import Profile from "./components/Profile"
+import Header from "../../components/Header" 
 import ListLoanCustomer from "./components/ListLoanCustomer" 
 
 const page = () => {
   return (
     <div>
-        <Header title="Clientes: client_id" url='/customers'/>
-        <Profile /> 
+        <Header title="Clientes: client_id" url='/customers'/> 
         <ListLoanCustomer />
     </div>
   )

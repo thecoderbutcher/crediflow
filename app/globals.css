@@ -15,11 +15,29 @@
 body{
     @apply bg-secondary/10 text-secondary/80;
 }
+
 input {
     @apply border border-gray-200 h-10 px-4 rounded-md text-sm focus:outline-none focus:border-gray-400;
 }
 
+/* Chrome, Safari, Edge */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+select{
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: none;
+} 
+
 button{
     @apply cursor-pointer;
 }
-

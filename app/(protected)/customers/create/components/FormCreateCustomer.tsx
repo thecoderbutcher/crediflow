@@ -6,13 +6,11 @@ import { useEffect, useState, useTransition } from "react";
 import { CustomerSchema } from "@/schema";
 
 import FormGroup from '@/app/(protected)/components/FormGroup';
-import Image from 'next/image'
-import { FaLocationDot, FaPhoneFlip, FaNoteSticky, FaUser } from "react-icons/fa6";
+import { FaLocationDot, FaPhoneFlip, FaNoteSticky, FaUser, FaAddressCard, FaEnvelope } from "react-icons/fa6";
 import { createCustomer } from "../action/create";
 import { FormSuccess } from "@/app/(auth)/components/form-success";
 import { FormError } from "@/app/(auth)/components/form-error";
-import { getSession } from "next-auth/react";
-import { justNumbers } from "@/app/lib/utils";
+import { getSession } from "next-auth/react"; 
 const FormCreateCustomer = () => {
     const [employeeId, setEmployeeId] = useState<string | undefined>();
 
@@ -52,10 +50,7 @@ const FormCreateCustomer = () => {
         })
     }
     return (
-        <form className='flex flex-col gap-8 py-8 px-4 bg-darkText shadow-md items-center mt-2' onSubmit={handleSubmit(onSubmit)}>
-            <div className='flex items-center justify-center'>
-                <Image src={'/app/default-user.webp'} width={40} height={40} alt='userphoto'/> 
-            </div>
+        <form className='flex flex-col gap-8 py-8 px-4 bg-darkText shadow-md items-center pt-8' onSubmit={handleSubmit(onSubmit)}>
             <FormGroup Icon={FaUser} labelFor="name" labelText="Nombre" errorMessage={errors.firstName?.message}>
                 <input 
                     {...register('firstName')}
@@ -76,18 +71,17 @@ const FormCreateCustomer = () => {
                     disabled={isPending}
                 /> 
             </FormGroup>
-            <FormGroup Icon={FaLocationDot} labelFor="idperson" labelText="DNI" errorMessage={errors.idperson?.message}>
+            <FormGroup Icon={FaAddressCard} labelFor="idperson" labelText="DNI" errorMessage={errors.idperson?.message}>
                 <input 
                     {...register('idperson')}
-                    type="text" 
-                    name='idperson' 
-                    onKeyDown={(event)=> justNumbers(event)}
+                    type="number" 
+                    name='idperson'  
                     placeholder='Ingresar numero de documento' 
                     className="flex w-full outline-none focus:outline-none border-none" 
                     disabled={isPending}
                 /> 
             </FormGroup> 
-            <FormGroup Icon={FaLocationDot} labelFor="email" labelText="Email" errorMessage={errors.email?.message}>
+            <FormGroup Icon={FaEnvelope} labelFor="email" labelText="Email" errorMessage={errors.email?.message}>
                 <input 
                     {...register('email')}
                     type="email" 
@@ -110,9 +104,8 @@ const FormCreateCustomer = () => {
             <FormGroup Icon={FaPhoneFlip} labelFor="phone" labelText="Telefono" errorMessage={errors.phone?.message}>
                 <input 
                     {...register('phone')}
-                    type="text" 
-                    name='phone' 
-                    onKeyDown={(event)=> justNumbers(event)}
+                    type="number" 
+                    name='phone'  
                     placeholder='Ingresar numero de telefono' 
                     className="flex w-full outline-none focus:outline-none border-none" 
                     disabled={isPending}
