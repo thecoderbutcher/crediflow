@@ -10,6 +10,7 @@ interface CustomerProps {
     img?: string;
     payToday: boolean;
 }
+
 const Customer = ({name, lastname, totalloan, img, payToday}: CustomerProps) => {
     return (
         <div className="px-1 mt-2 w-full">

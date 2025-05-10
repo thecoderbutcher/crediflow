@@ -1,6 +1,6 @@
 import Header from "../components/Header"
 import FilterStatus from "./components/FilterStatus"
-import ListCustomer from "./components/ListCustomer"
+import ListCustomer from "./list/components/ListCustomer"
 import Topbar from "./components/Topbar"
 
 const page = () => {

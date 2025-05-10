@@ -17,7 +17,7 @@ export const LoginForm = () => {
     const [success, setSuccess] = useState<string | undefined>('');
     const [isPending, startTransition] = useTransition();
 
-    const { register, handleSubmit, formState: { errors } } = useForm<z.infer<typeof LoginSchema>>({
+    const { register, handleSubmit, formState: { errors,isSubmitting } } = useForm<z.infer<typeof LoginSchema>>({
         resolver: zodResolver(LoginSchema),
         defaultValues: {
             email: "",
@@ -46,7 +46,7 @@ export const LoginForm = () => {
                     name="email" 
                     id="email" 
                     placeholder="ejemplo@email.com" 
-                    disabled={isPending}
+                    disabled={isSubmitting}
                     className={`${errors.email ? 'outline-danger outline-1' : ''}`}
                 />
                 {errors.email && ( <p className="text-sm text-danger">{errors.email.message}</p> )} 
@@ -71,7 +71,7 @@ export const LoginForm = () => {
             <FormSuccess message={success} />
             <FormError message={error || urlError} />
             <div className="flex flex-col gap-2">
-                <button className="w-full bg-primary text-white py-2 rounded-md">Iniciar Sesión</button>
+                <button className="w-full bg-primary text-white py-2 rounded-md" disabled={isSubmitting}>Iniciar Sesión</button>
             </div>
         </form> 
     )
