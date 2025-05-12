@@ -6,10 +6,17 @@ import { FaUserPlus } from "react-icons/fa6";
 import { LuCalendarArrowUp, LuCalendarArrowDown } from "react-icons/lu";
 import { LiaSortAlphaDownSolid, LiaSortAlphaDownAltSolid } from "react-icons/lia";
 import { useState } from "react";
+import { useCustomersStore } from "../store/customerStore";
 
 const Topbar = () => {
     const [isDateFilter, setIsDateFilter] = useState(false);
     const [isAlphaFilter, setIsAlphaFilter] = useState(false);
+    const { toggleOrderName } = useCustomersStore();
+
+    const handleToggleOrderName = () => {
+        toggleOrderName();
+        setIsAlphaFilter(!isAlphaFilter);
+    }
 
     return (
         <ul className="flex gap-1 items-center justify-center text-2xl mt-2">
@@ -23,7 +30,7 @@ const Topbar = () => {
             </li>
             <li 
                 className="bg-darkText border border-primary/50 shadow-md px-2 py-2 rounded-md"
-                onClick={() => setIsAlphaFilter(!isAlphaFilter)}
+                onClick={() => handleToggleOrderName()}
             >
                 { !isAlphaFilter 
                     ? <LiaSortAlphaDownSolid /> 

@@ -1,18 +1,24 @@
-
+'use client'
 import Image from 'next/image';
-import { list } from '../action/list'; 
-import Link from 'next/link';
+import Link from 'next/link'; 
 import { FaCircleCheck, FaTriangleExclamation } from 'react-icons/fa6';
-import { IoIosArrowForward } from 'react-icons/io';
-import { auth } from '@/auth';
 import { FaUserAltSlash } from "react-icons/fa";
+import { IoIosArrowForward } from 'react-icons/io'; 
+import { useCustomersStore } from '../../store/customerStore';
+import { useEffect } from 'react';
 
-const ListCustomer = async() => {
-  
-  const session = await auth()
-  const employeeId = session?.user.id;
-  const customers = await list(employeeId);
-  
+interface Customer {
+  id: string;
+  firstName: string;
+  lastName: string;
+  statusPay: boolean;
+}
+const ListCustomer = ({ listCustomer }: { listCustomer: Customer[] }) => {  
+  const { customers, setCustomers } = useCustomersStore();
+
+  useEffect(() => {
+    setCustomers(listCustomer);
+  }, [listCustomer, setCustomers]); 
   if(customers.length == 0){
     return(
       <div className='flex flex-col gap-4 w-full mt-8 justify-center items-center'>

@@ -33,7 +33,7 @@ export const CustomerSchema = z.object({
     notes: z.string().optional(),
 })
 
-  export const LoanSchema = z.object({
+export const LoanSchema = z.object({
     clientId: z.string().cuid({message: 'ID de cliente inválido.'}),
     amount: z.number({
         required_error: 'El monto es requerido.', 
