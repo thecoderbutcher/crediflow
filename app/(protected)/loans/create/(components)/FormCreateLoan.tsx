@@ -8,7 +8,7 @@ const FormCreateLoan = () => {
   return (
     <form className="flex flex-col gap-6 px-4 py-8 bg-darkText shadow-md">
         <FormGroup Icon={FaMoneyBillAlt} labelFor="typeinteres" labelText="Tipo de interes"> 
-            <select name="typeinteres" className="w-full outline-none focus:outline-none active:outline-none border-none py-2" id="typeinteres"> 
+            <select name="typeinteres" className="w-full outline-none focus:outline-none active:outline-none border-none p-2" id="typeinteres"> 
                 <option value="">Interes al capital incial</option>
                 <option value="">Interes a cada cuota</option>
                 <option value="">Interes compuesto bancario</option>

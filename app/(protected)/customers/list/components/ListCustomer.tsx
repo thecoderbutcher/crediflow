@@ -14,11 +14,14 @@ interface Customer {
   statusPay: boolean;
 }
 const ListCustomer = ({ listCustomer }: { listCustomer: Customer[] }) => {  
-  const { customers, setCustomers } = useCustomersStore();
+  const { setCustomers,customersFiltered } = useCustomersStore();
 
   useEffect(() => {
     setCustomers(listCustomer);
   }, [listCustomer, setCustomers]); 
+
+  const customers = customersFiltered()
+  
   if(customers.length == 0){
     return(
       <div className='flex flex-col gap-4 w-full mt-8 justify-center items-center'>
@@ -26,7 +29,6 @@ const ListCustomer = ({ listCustomer }: { listCustomer: Customer[] }) => {
           <FaUserAltSlash />
           Aun no has registrado clientes
         </p>
-        <Link href="/customers/create" className="flex items-center bg-primary gap-1 text-darkText border border-primary px-2 py-1 rounded-lg shadow-md">Agregar cliente</Link>
       </div>
     )
   }

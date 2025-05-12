@@ -2,14 +2,12 @@
 import Link from "next/link";
 import Search from "./Search";
 
-import { FaUserPlus } from "react-icons/fa6";
-import { LuCalendarArrowUp, LuCalendarArrowDown } from "react-icons/lu";
+import { FaUserPlus } from "react-icons/fa6"; 
 import { LiaSortAlphaDownSolid, LiaSortAlphaDownAltSolid } from "react-icons/lia";
 import { useState } from "react";
 import { useCustomersStore } from "../store/customerStore";
 
-const Topbar = () => {
-    const [isDateFilter, setIsDateFilter] = useState(false);
+const Topbar = () => { 
     const [isAlphaFilter, setIsAlphaFilter] = useState(false);
     const { toggleOrderName } = useCustomersStore();
 
@@ -19,13 +17,13 @@ const Topbar = () => {
     }
 
     return (
-        <ul className="flex gap-1 items-center justify-center text-2xl mt-2">
+        <ul className="flex gap-2 px-2 w-full items-center text-2xl mt-2">
             <li className="bg-darkText border border-primary/50 shadow-md px-2 py-2 rounded-md">
                 <Link href="/customers/create">
                     <FaUserPlus />
                 </Link>
             </li>
-            <li>
+            <li className="w-full">
                 <Search />
             </li>
             <li 
@@ -38,15 +36,7 @@ const Topbar = () => {
                 }
 
             </li>
-            <li 
-                className="bg-darkText border border-primary/50 shadow-md px-2 py-2 rounded-md"
-                onClick={() => setIsDateFilter(!isDateFilter)}
-            >
-                { !isDateFilter 
-                    ? <LuCalendarArrowDown/> 
-                    : <LuCalendarArrowUp/>
-                }
-            </li>
+            
         </ul>
         )
 }

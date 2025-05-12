@@ -22,7 +22,7 @@ type CustomerState = {
     orderPay: stateOrder | null
     toggleOrderPay: () => void
     
-    get customersFiltered(): Customer[] 
+    customersFiltered(): Customer[] 
 }
 
 export const useCustomersStore = create<CustomerState>((set, get) => ({
@@ -32,13 +32,13 @@ export const useCustomersStore = create<CustomerState>((set, get) => ({
     filterText: '',
     setFilterText: (filterText) => set({filterText}),
 
-    orderName: 'desc',
+    orderName: 'asc',
     toggleOrderName: () => set((state) => ({orderName: state.orderName === 'asc' ? 'desc' : 'asc'})),
 
     orderPay: null,
     toggleOrderPay: () => set((state) => ({orderPay: state.orderPay === 'asc' ? 'desc' : 'asc', orderName: 'desc'})),
 
-    get customersFiltered() {
+    customersFiltered() {
         const {
             customers,
             filterText,

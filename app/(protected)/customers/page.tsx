@@ -7,10 +7,13 @@ import { list } from "./list/action/list"
 
 const page = async() => {
   const session = await auth();
-  const customerList = await list(session?.user.id);
+  const customerList = (await list(session?.user.id)).map(customer => ({
+    ...customer,
+    statusPay: customer.statusPay ?? false, // Default to false if null
+  }));
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full">
       <Header title="Clientes" url="/dashboard"/>
       <Topbar />
       <FilterStatus />
