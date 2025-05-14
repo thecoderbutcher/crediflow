@@ -4,11 +4,11 @@ import { LoanSchema } from "@/schema";
 import { db } from "@/lib/db"
 
 interface LoanData {
-  loanTypeId: string;
+  loanTypeId: number;
   amount: number;
   interest: number;
   totalInstallments: number;
-  paymentFrequencyId: string;
+  paymentFrequencyId: number;
   paymentDate: string;
   customerId: string;
   notes?: string;
@@ -32,8 +32,8 @@ export const create = async (values: z.infer<typeof LoanSchema>, customerId: str
     const loanData: LoanData = {
         amount,
         customerId,
-        loanTypeId,
-        paymentFrequencyId,
+        loanTypeId: Number(loanTypeId),
+        paymentFrequencyId: Number(paymentFrequencyId),
         interest,
         totalInstallments,
         paymentDate: new Date(paymentDate).toISOString(),

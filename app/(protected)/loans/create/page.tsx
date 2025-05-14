@@ -5,8 +5,8 @@ import { getLoanType, getPaymentType } from "./action/create"
 import { useCustomersStore } from "../../customers/store/customerStore"
 import { useEffect, useState } from "react"
 
-const Page = () => {
-   const { customerId } = useCustomersStore();
+const Page = () => { 
+  const { customerId } = useCustomersStore();
   const [loanType, setLoanType] = useState<{ name: string; id: string }[] | null>(null);
   const [paymentType, setPaymentType] = useState<{ name: string; id: string }[] | null>(null);
 
