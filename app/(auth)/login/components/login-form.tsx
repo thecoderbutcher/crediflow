@@ -33,11 +33,11 @@ export const LoginForm = () => {
             login(value).then((data) => {
                 setSuccess(data?.success);
                 setError(data?.error);    
-            });
+            }) 
         })
     }
     return (  
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
+        <form className="flex flex-col gap-4 w-full" onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-2">
                 <label htmlFor="email" className={`${errors.email ? 'text-danger' : ''}`}>Email</label>
                 <input 

@@ -10,6 +10,9 @@ type Customer = {
 type stateOrder = 'asc' | 'desc'
 
 type CustomerState = {
+    customerId: string
+    setCustomerId: (customerId: string) => void
+
     customers: Customer[]
     setCustomers: (customers: Customer[]) => void
     
@@ -26,6 +29,9 @@ type CustomerState = {
 }
 
 export const useCustomersStore = create<CustomerState>((set, get) => ({
+    customerId: '',
+    setCustomerId: (customerId) => set({customerId}),
+    
     customers: [],
     setCustomers: (customers) => set({customers}),
 

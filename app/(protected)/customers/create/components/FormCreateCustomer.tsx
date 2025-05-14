@@ -4,16 +4,20 @@ import { zodResolver }from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { useEffect, useState, useTransition } from "react";
 import { CustomerSchema } from "@/schema";
-
-import FormGroup from '@/app/(protected)/components/FormGroup';
+import { useRouter } from "next/navigation";
 import { FaLocationDot, FaPhoneFlip, FaNoteSticky, FaUser, FaAddressCard, FaEnvelope } from "react-icons/fa6";
 import { createCustomer } from "../action/create";
 import { FormSuccess } from "@/app/(auth)/components/form-success";
 import { FormError } from "@/app/(auth)/components/form-error";
-import { getSession } from "next-auth/react"; 
+import FormGroup from '@/app/(protected)/components/FormGroup';
+import { getSession } from "next-auth/react";  
 const FormCreateCustomer = () => {
     const [employeeId, setEmployeeId] = useState<string | undefined>();
-
+    const [error, setError] = useState<string | undefined>('');
+    const [success, setSuccess] = useState<string | undefined>('');
+    const [isPending, startTransition] = useTransition();
+    const router = useRouter();
+    
     useEffect(() => {
         const fetchSession = async () => {
             const session = await getSession();
@@ -22,11 +26,8 @@ const FormCreateCustomer = () => {
         fetchSession();
     }, []); 
     
-    const [error, setError] = useState<string | undefined>('');
-    const [success, setSuccess] = useState<string | undefined>('');
-    const [isPending, startTransition] = useTransition();
 
-    const { register, handleSubmit, formState: { errors } } = useForm<z.infer<typeof CustomerSchema>>({
+    const { register, reset, handleSubmit, formState: { errors } } = useForm<z.infer<typeof CustomerSchema>>({
         resolver: zodResolver(CustomerSchema),
         defaultValues: {
             firstName: "",
@@ -44,8 +45,15 @@ const FormCreateCustomer = () => {
         setSuccess('');
         startTransition(() => {
             createCustomer(values, employeeId).then((data) => {
-                setSuccess(data?.success);
-                setError(data?.error);    
+                if(data.error) {setError(data.error)}
+                else{
+                    setSuccess(data.success);
+                    setTimeout(() => {
+                        router.push('/customers')
+                        reset();
+                    },2000)
+
+                }
             });
         })
     }

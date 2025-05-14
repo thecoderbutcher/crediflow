@@ -33,13 +33,12 @@ export const CustomerSchema = z.object({
     notes: z.string().optional(),
 })
 
-export const LoanSchema = z.object({
-    clientId: z.string().cuid({message: 'ID de cliente inválido.'}),
-    amount: z.number({
-        required_error: 'El monto es requerido.', 
-        invalid_type_error: 'El monto debe ser un número.'})
-        .positive('El monto debe ser mayor a 0.'),
-    loanTypeId: z.string().cuid({ message: 'Debe seleccionar un tipo de préstamo válido.' }),
-    paymentFrequencyId: z.string().cuid({ message: 'Debe seleccionar una frecuencia de pago válida.'}),
-    statusId: z.string().cuid({ message: 'Debe seleccionar un estado válido.'}),
+export const LoanSchema = z.object({ 
+    amount: z.coerce.number().int().positive().min(0, { message: 'Ingrese un monto válido' }),
+    loanTypeId: z.string().nonempty({ message: 'Debe seleccionar un tipo de préstamo válido.' }),
+    interest: z.coerce.number().int().positive().min(0, { message: 'Ingrese un interés válido' }),
+    installments: z.coerce.number().int().positive({ message: 'Ingrese una cantidad válida de cuotas' }),
+    paymentFrequencyId: z.string().nonempty({ message: 'Debe seleccionar una frecuencia de pago válida.'}),
+    paymentDate: z.string().nonempty({ message: 'Ingrese la fecha de pago' }),
+    notes: z.string().optional(),
 })
