@@ -34,7 +34,7 @@ const Profile = ({customer}: Customer) => {
                     <div className="flex flex-col text-secondary/90">
                         <p className="font-bold">{customer?.firstName} {customer?.lastName}</p>
                         <p className="text-sm font-light">{customer?.address}</p>
-                        <p className="text-sm font-light">{customer?.phone}</p>
+                        <a className="text-sm font-light" href={`https://wa.me/${customer?.phone}`}>{customer?.phone}</a>
                         <p className="text-sm font-light">{customer?.email}</p>
                     </div>
                 </div>
