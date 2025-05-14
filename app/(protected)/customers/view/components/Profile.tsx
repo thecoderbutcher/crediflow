@@ -18,11 +18,12 @@ interface Customer {
 }
 
 const Profile = ({customer}: Customer) => { 
-    const { setCustomerId } = useCustomersStore();
+    const {customerId,  setCustomerId } = useCustomersStore();
 
     useEffect(() => {
-        setCustomerId(customer?.id || '')
-    }, [customer?.id, setCustomerId])
+        setCustomerId(customer.id)
+    }, [customer?.id, setCustomerId, customerId]) 
+
     return (
         <div className='flex flex-col gap-4 bg-light px-4 py-2 rounded-b-4xl shadow-lg'>
             <div className='flex gap-2 items-start justify-between'> 

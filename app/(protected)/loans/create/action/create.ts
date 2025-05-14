@@ -7,7 +7,7 @@ interface LoanData {
   loanTypeId: string;
   amount: number;
   interest: number;
-  installments: number;
+  totalInstallments: number;
   paymentFrequencyId: string;
   paymentDate: string;
   customerId: string;
@@ -27,22 +27,22 @@ export const create = async (values: z.infer<typeof LoanSchema>, customerId: str
 
     if (!validateFields.success) return { error: validateFields.error.issues[0].message }  
  
-    const { loanTypeId, amount, interest, installments, paymentFrequencyId, paymentDate, notes} = validateFields.data;
-
+    const { loanTypeId, amount, interest, totalInstallments, paymentFrequencyId, paymentDate, notes} = validateFields.data;
+ 
     const loanData: LoanData = {
-        loanTypeId,
         amount,
-        interest,
-        installments,
+        customerId,
+        loanTypeId,
         paymentFrequencyId,
-        paymentDate,
+        interest,
+        totalInstallments,
+        paymentDate: new Date(paymentDate).toISOString(),
         notes,
-        customerId
     };
 
     try {
-        console.log(loanData);
+        await db.loan.create({ data: loanData });
         return { success: 'Préstamo creado con éxito' };
     } 
-    catch{ return { error: 'Error al crear el préstamo' } }
+    catch(err){ return { error: 'Error al crear el préstamo' + err } }
 }

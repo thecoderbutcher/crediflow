@@ -15,15 +15,15 @@ enum UserRole {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String     @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?    @unique
   emailVerified DateTime?
   image         String?
   password      String?
-  role          UserRole  @default(USER)
+  role          UserRole   @default(USER)
   accounts      Account[]
-  customer Customer[]
+  customer      Customer[]
 }
 
 model Account {
@@ -64,7 +64,7 @@ model PasswordResetToken {
 }
 
 model Customer {
-  id String   @id @default(uuid())
+  id         String   @id @default(uuid())
   firstName  String
   lastName   String
   email      String
@@ -72,10 +72,10 @@ model Customer {
   address    String
   phone      String
   notes      String?
-  statusPay  Boolean? 
+  statusPay  Boolean?
   employeeId String
-  loans     Loan[]
-  employee   User @relation(fields: [employeeId], references: [id])
+  loans      Loan[]
+  employee   User     @relation(fields: [employeeId], references: [id])
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 
@@ -83,34 +83,31 @@ model Customer {
 }
 
 model Loan {
-  id                String   @id @default(cuid())
-  amount            Float
-  customerId        String
-  customer          Customer @relation(fields: [customerId], references: [id])
-  loanTypeId        String
-  loanType          LoanType @relation(fields: [loanTypeId], references: [id])
+  id                 String           @id @default(cuid())
+  amount             Float
+  loanTypeId         String
+  interest           Int
+  loanType           LoanType         @relation(fields: [loanTypeId], references: [id])
+  paymentDate        DateTime
   paymentFrequencyId String
-  paymentFrequency  PaymentFrequency @relation(fields: [paymentFrequencyId], references: [id])
-  statusId          String
-  status            LoanStatus @relation(fields: [statusId], references: [id])
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
+  paymentFrequency   PaymentFrequency @relation(fields: [paymentFrequencyId], references: [id])
+  totalInstallments  Int
+  status             Boolean          @default(false)
+  customerId         String
+  notes             String
+  customer           Customer         @relation(fields: [customerId], references: [id])
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime         @updatedAt
 }
 
 model LoanType {
-  id   String @id @default(cuid())
-  name String @unique
+  id    String @id @default(cuid())
+  name  String @unique
   loans Loan[]
 }
 
 model PaymentFrequency {
-  id   String @id @default(cuid())
-  name String @unique
-  loans Loan[]
-}
-
-model LoanStatus {
-  id   String @id @default(cuid())
-  name String @unique
+  id    String @id @default(cuid())
+  name  String @unique
   loans Loan[]
 }

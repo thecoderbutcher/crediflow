@@ -37,7 +37,7 @@ export const LoanSchema = z.object({
     amount: z.coerce.number().int().positive().min(0, { message: 'Ingrese un monto válido' }),
     loanTypeId: z.string().nonempty({ message: 'Debe seleccionar un tipo de préstamo válido.' }),
     interest: z.coerce.number().int().positive().min(0, { message: 'Ingrese un interés válido' }),
-    installments: z.coerce.number().int().positive({ message: 'Ingrese una cantidad válida de cuotas' }),
+    totalInstallments: z.coerce.number().int().positive({ message: 'Ingrese una cantidad válida de cuotas' }),
     paymentFrequencyId: z.string().nonempty({ message: 'Debe seleccionar una frecuencia de pago válida.'}),
     paymentDate: z.string().nonempty({ message: 'Ingrese la fecha de pago' }),
     notes: z.string().optional(),

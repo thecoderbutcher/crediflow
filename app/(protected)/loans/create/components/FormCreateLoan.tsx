@@ -22,20 +22,20 @@ const FormCreateLoan = ({ loanType, paymentType }: FormCreateLoanProps) => {
     const [success, setSuccess] = useState<string | undefined>('');
     const [isPending, startTransition] = useTransition();
     const router = useRouter();
-    const {customerId} = useCustomersStore();
+    const { customerId } = useCustomersStore();
 
     const { register, reset, handleSubmit, formState: { errors } } = useForm<z.infer<typeof LoanSchema>>({ resolver: zodResolver(LoanSchema) })
 
     const onSubmit = (values: z.infer<typeof LoanSchema>) => {
         setError('');
-        setSuccess('');
-        startTransition(() => {
+        setSuccess(''); 
+        startTransition(() => { 
             create(values, customerId).then((data) => {
                 if(data.error) { setError(data.error) }
                 else{
                     setSuccess(data.success);
                     setTimeout(() => {
-                        router.push('/customers/view/' + customerId)
+                        router.push(`/customers/view/${customerId}`)
                         reset();
                     },2000)
 
@@ -80,11 +80,11 @@ const FormCreateLoan = ({ loanType, paymentType }: FormCreateLoanProps) => {
                     disabled={isPending}
                 />  
             </FormGroup>
-            <FormGroup Icon={GiReceiveMoney} labelFor="installments" labelText="Cuotas" errorMessage={errors.installments?.message}> 
+            <FormGroup Icon={GiReceiveMoney} labelFor="totalInstallments" labelText="Cuotas" errorMessage={errors.totalInstallments?.message}> 
                 <input 
-                    {...register("installments")}
+                    {...register("totalInstallments")}
                     type="number" 
-                    name="installments"
+                    name="totalInstallments"
                     placeholder="Ingrese cantidad de coutas" 
                     className=" w-full outline-none focus:outline-none active:outline-none border-none" 
                     disabled={isPending}
