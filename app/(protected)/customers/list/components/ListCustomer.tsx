@@ -32,6 +32,7 @@ const ListCustomer = ({ listCustomer }: { listCustomer: Customer[] }) => {
       </div>
     )
   }
+  
   return (
     <div className='flex flex-col w-full mt-2'>
         {customers.map((customer, index) => (

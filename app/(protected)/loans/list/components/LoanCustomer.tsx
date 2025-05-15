@@ -1,9 +1,8 @@
-import Link from 'next/link'
-import React from 'react'
-import { IoIosArrowForward } from 'react-icons/io' 
+import Link from "next/link"
+import { IoIosArrowForward } from "react-icons/io"
 
-const ListLoanCustomer = () => {
-  return (
+const LoanCustomer = () => {
+  return ( 
     <div className='flex flex-col gap-4 mt-4'>
         <Link href={'/loans/quotas'} className='flex gap-2 items-center justify-between px-4 py-2 bg-white mx-2 rounded-lg shadow-md border-l-4 border-l-danger'> 
             <div className='flex flex-col w-full'>
@@ -21,7 +20,7 @@ const ListLoanCustomer = () => {
         </Link>
         
     </div>
-  )
+  ) 
 }
 
-export default ListLoanCustomer
+export default LoanCustomer
