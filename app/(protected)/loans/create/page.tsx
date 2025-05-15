@@ -7,8 +7,8 @@ import { useEffect, useState } from "react"
 
 const Page = () => { 
   const { customerId } = useCustomersStore();
-  const [loanType, setLoanType] = useState<{ name: string; id: string }[] | null>(null);
-  const [paymentType, setPaymentType] = useState<{ name: string; id: string }[] | null>(null);
+  const [loanType, setLoanType] = useState<{ name: string; id: number }[] | null>(null);
+  const [paymentType, setPaymentType] = useState<{ name: string; id: number }[] | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {

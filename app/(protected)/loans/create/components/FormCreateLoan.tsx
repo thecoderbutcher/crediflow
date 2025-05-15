@@ -13,8 +13,8 @@ import { FormError } from "@/app/(auth)/components/form-error";
 import { create } from "../action/create";
 import { useCustomersStore } from "@/app/(protected)/customers/store/customerStore";
 interface FormCreateLoanProps {
-  loanType: { id: string; name: string }[];
-  paymentType: { id: string; name: string }[];
+  loanType: { id: number; name: string }[];
+  paymentType: { id: number; name: string }[];
 }
 
 const FormCreateLoan = ({ loanType, paymentType }: FormCreateLoanProps) => {
@@ -34,6 +34,7 @@ const FormCreateLoan = ({ loanType, paymentType }: FormCreateLoanProps) => {
                 if(data.error) { setError(data.error) }
                 else{
                     setSuccess(data.success);
+                    // agregar la cantidad de cuotas a la lista de prestamos
                     setTimeout(() => {
                         router.push(`/customers/view/${customerId}`)
                         reset();
