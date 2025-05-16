@@ -14,13 +14,9 @@ interface LoanData {
   notes?: string;
 }
 
-export const getLoanType = async () => {
-    return await db.loanType.findMany();
-}
+export const getLoanType = async () => { return await db.loanType.findMany(); }
 
-export const getPaymentType = async () => {
-    return await db.paymentFrequency.findMany()
-}
+export const getPaymentType = async () => { return await db.paymentFrequency.findMany() }
 
 export const create = async (values: z.infer<typeof LoanSchema>, customerId: string) => {
     const validateFields = LoanSchema.safeParse(values);
@@ -39,10 +35,41 @@ export const create = async (values: z.infer<typeof LoanSchema>, customerId: str
         paymentDate: new Date(paymentDate).toISOString(),
         notes,
     };
-
+    const loanWithInstallments = () => {
+        let result = 0;
+        switch (loanData.loanTypeId) {
+            case 1:
+                result = (loanData.amount + (loanData.amount * ( loanData.interest / 100 ) * loanData.totalInstallments)) 
+                break;
+            case 2:
+                const amortization = loanData.amount / loanData.totalInstallments;
+                let rest = loanData.amount;
+                for (let i = 1; i <= loanData.totalInstallments; i++) {
+                    result += amortization + (rest * ( loanData.interest / 100 ));
+                    rest -= amortization;
+                }
+                break;
+            case 3:
+                result = loanData.amount * Math.pow(1 + (loanData.interest / 100), loanData.totalInstallments);
+                break;
+        }
+        return Math.ceil(result);
+    }
+    console.log(loanWithInstallments())
     try {
         await db.loan.create({ data: loanData });
         return { success: 'Préstamo creado con éxito' };
     } 
     catch(err){ return { error: 'Error al crear el préstamo' + err } }
+}
+
+export const getLoanByCustomerID = async (id: string) => {
+    return await db.loan.findFirstOrThrow({
+        where: {
+            customerId: id
+        },
+        orderBy: {
+            createdAt: 'desc'
+        }
+    })
 }

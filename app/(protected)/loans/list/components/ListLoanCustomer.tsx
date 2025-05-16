@@ -42,7 +42,7 @@ const ListLoanCustomer = () => {
   }
 
   return (
-    <div className='flex flex-col gap-4 mt-4'>
+    <div className='flex flex-col gap-3 mt-4'>
         {listLoan?.map((loan, index) => (
           <Link 
             key={index} 
