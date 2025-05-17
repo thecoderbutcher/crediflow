@@ -83,23 +83,24 @@ model Customer {
 }
 
 model Loan {
-  id                   Int              @id @default(autoincrement())
-  amount               Float
-  interest             Int
-  loanTypeId           Int
-  loanType             LoanType         @relation(fields: [loanTypeId], references: [id]) 
-  loanWithInstallments Float
-  paymentDate          DateTime
-  paymentFrequencyId   Int
-  paymentFrequency     PaymentFrequency @relation(fields: [paymentFrequencyId], references: [id])
-  totalInstallments    Int
-  customerId           String
-  notes                String
-  statusId             Int              @default(1)
-  status               LoanStatus       @relation(fields: [statusId], references: [id])
-  customer             Customer         @relation(fields: [customerId], references: [id])
-  createdAt            DateTime         @default(now())
-  updatedAt            DateTime         @updatedAt
+  id                     Int              @id @default(autoincrement())
+  amount                 Float
+  amountWithInstallments Float
+  interest               Int
+  loanTypeId             Int
+  loanType               LoanType         @relation(fields: [loanTypeId], references: [id])
+  paymentDate            DateTime
+  paymentFrequencyId     Int
+  paymentFrequency       PaymentFrequency @relation(fields: [paymentFrequencyId], references: [id])
+  totalInstallments      Int
+  customerId             String
+  notes                  String
+  statusId               Int              @default(1)
+  status                 LoanStatus       @relation(fields: [statusId], references: [id])
+  customer               Customer         @relation(fields: [customerId], references: [id])
+  instalments            Installments[]
+  createdAt              DateTime         @default(now())
+  updatedAt              DateTime         @updatedAt
 }
 
 model LoanType {
@@ -115,7 +116,18 @@ model PaymentFrequency {
 }
 
 model LoanStatus {
-  id    Int    @id @default(autoincrement())
-  name  String @unique
-  loans Loan[]
+  id           Int            @id @default(autoincrement())
+  name         String         @unique
+  loans        Loan[]
+  installments Installments[]
+}
+
+model Installments {
+  id             Int        @id @default(autoincrement())
+  value          Float
+  expirationDate DateTime
+  loanId         Int
+  loan           Loan       @relation(fields: [loanId], references: [id])
+  statusId       Int        @default(1)
+  status         LoanStatus @relation(fields: [statusId], references: [id])
 }

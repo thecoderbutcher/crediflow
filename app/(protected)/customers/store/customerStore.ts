@@ -13,6 +13,9 @@ type CustomerState = {
     customerId: string
     setCustomerId: (customerId: string) => void
 
+    customerName : string
+    setCustomerName: (customerName: string) => void
+
     customers: Customer[]
     setCustomers: (customers: Customer[]) => void
     
@@ -31,6 +34,9 @@ type CustomerState = {
 export const useCustomersStore = create<CustomerState>((set, get) => ({
     customerId: '',
     setCustomerId: (customerId) => set({customerId}),
+
+    customerName: '',
+    setCustomerName: (customerName) => set({customerName}),
     
     customers: [],
     setCustomers: (customers) => set({customers}),

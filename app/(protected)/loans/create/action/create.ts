@@ -6,6 +6,7 @@ import { db } from "@/lib/db"
 interface LoanData {
   loanTypeId: number;
   amount: number;
+  amountWithInstallments: number;
   interest: number;
   totalInstallments: number;
   paymentFrequencyId: number;
@@ -24,9 +25,31 @@ export const create = async (values: z.infer<typeof LoanSchema>, customerId: str
     if (!validateFields.success) return { error: validateFields.error.issues[0].message }  
  
     const { loanTypeId, amount, interest, totalInstallments, paymentFrequencyId, paymentDate, notes} = validateFields.data;
- 
+    
+    const loanWithInstallments = () => {
+        let result = 0;
+        switch (Number(loanTypeId)) {
+            case 1:
+                result = (amount + (amount * ( interest / 100 ) * totalInstallments)) 
+                break;
+            case 2:
+                const amortization = amount / totalInstallments;
+                let rest = amount;
+                for (let i = 1; i <= totalInstallments; i++) {
+                    result += amortization + (rest * ( interest / 100 ));
+                    rest -= amortization;
+                }
+                break;
+            case 3:
+                result = amount * Math.pow(1 + (interest / 100), totalInstallments);
+                break;
+        }
+        return Math.ceil(result);
+    } 
+
     const loanData: LoanData = {
         amount,
+        amountWithInstallments: loanWithInstallments(),
         customerId,
         loanTypeId: Number(loanTypeId),
         paymentFrequencyId: Number(paymentFrequencyId),
@@ -35,27 +58,7 @@ export const create = async (values: z.infer<typeof LoanSchema>, customerId: str
         paymentDate: new Date(paymentDate).toISOString(),
         notes,
     };
-    const loanWithInstallments = () => {
-        let result = 0;
-        switch (loanData.loanTypeId) {
-            case 1:
-                result = (loanData.amount + (loanData.amount * ( loanData.interest / 100 ) * loanData.totalInstallments)) 
-                break;
-            case 2:
-                const amortization = loanData.amount / loanData.totalInstallments;
-                let rest = loanData.amount;
-                for (let i = 1; i <= loanData.totalInstallments; i++) {
-                    result += amortization + (rest * ( loanData.interest / 100 ));
-                    rest -= amortization;
-                }
-                break;
-            case 3:
-                result = loanData.amount * Math.pow(1 + (loanData.interest / 100), loanData.totalInstallments);
-                break;
-        }
-        return Math.ceil(result);
-    }
-    console.log(loanWithInstallments())
+
     try {
         await db.loan.create({ data: loanData });
         return { success: 'Préstamo creado con éxito' };
