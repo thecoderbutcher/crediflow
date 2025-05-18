@@ -3,11 +3,11 @@ import FilterStatus from "./components/FilterStatus"
 import ListCustomer from "./list/components/ListCustomer"
 import Topbar from "./components/Topbar"
 import { auth } from "@/auth"
-import { list } from "./list/action/list"
+import { listCustomers } from "./list/action/list"
 
 const page = async() => {
   const session = await auth();
-  const customerList = (await list(session?.user.id)).map(customer => ({
+  const customerList = (await listCustomers(session?.user.id)).map(customer => ({
     ...customer,
     statusPay: customer.statusPay ?? false, // Default to false if null
   }));
@@ -21,5 +21,5 @@ const page = async() => {
     </div>
     )
   }
-  
+
   export default page

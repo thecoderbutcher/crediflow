@@ -1,11 +1,5 @@
 import { create } from "zustand";
-
-type Customer = {
-    id: string
-    firstName: string
-    lastName: string 
-    statusPay: boolean 
-}
+import { Customer } from '@prisma/client';
 
 type stateOrder = 'asc' | 'desc'
 
@@ -18,17 +12,17 @@ type CustomerState = {
 
     customers: Customer[]
     setCustomers: (customers: Customer[]) => void
-    
+
     filterText: string
     setFilterText: (filterText: string) => void
-    
+
     orderName: stateOrder
     toggleOrderName: () => void
 
     orderPay: stateOrder | null
     toggleOrderPay: () => void
-    
-    customersFiltered(): Customer[] 
+
+    customersFiltered(): Customer[]
 }
 
 export const useCustomersStore = create<CustomerState>((set, get) => ({
@@ -37,7 +31,7 @@ export const useCustomersStore = create<CustomerState>((set, get) => ({
 
     customerName: '',
     setCustomerName: (customerName) => set({customerName}),
-    
+
     customers: [],
     setCustomers: (customers) => set({customers}),
 
@@ -57,7 +51,7 @@ export const useCustomersStore = create<CustomerState>((set, get) => ({
             orderName,
             orderPay
         } = get();
-        
+
         // Filter by text
         let filtered = customers.filter(customer => (`${customer.firstName} ${customer.lastName}`).toLowerCase().includes(filterText.toLowerCase()));
 
@@ -72,11 +66,11 @@ export const useCustomersStore = create<CustomerState>((set, get) => ({
             filtered = filtered.sort((a, b) => {
                 const nameA = `${a.firstName} ${a.lastName}`.toLowerCase()
                 const nameB = `${b.firstName} ${b.lastName}`.toLowerCase()
-                
+
                 if(orderName === 'asc') return nameA.localeCompare(nameB)
                 else return nameB.localeCompare(nameA)
             })
-        }        
+        }
         return filtered
     },
 }))
