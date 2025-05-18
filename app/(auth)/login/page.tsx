@@ -1,12 +1,12 @@
-import { AuthCardWrapper } from "../components/card-wrapper"
-import { LoginForm } from "./components/login-form"
+import { AuthCardWrapper } from '../components/card-wrapper';
+import { LoginForm } from './components/login-form';
 
 const page = () => {
   return (
     <AuthCardWrapper headerLabel="Bienvenido" backLabel="Volver" backLink="/">
-        <LoginForm />
+      <LoginForm />
     </AuthCardWrapper>
-  )
-}
+  );
+};
 
-export default page
+export default page;

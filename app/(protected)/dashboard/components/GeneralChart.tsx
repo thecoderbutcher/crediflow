@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -6,14 +6,21 @@ import {
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 } from 'chart.js';
 
 import { Bar } from 'react-chartjs-2';
 import React from 'react';
 
 // Registrar componentes de Chart.js
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 interface GeneralChartProps {
   data: {
@@ -36,34 +43,34 @@ export const GeneralChart: React.FC<GeneralChartProps> = ({ data }) => {
           data.prestado,
           data.capital,
           data.interes,
-          data.interesMora
+          data.interesMora,
         ],
         backgroundColor: [
           '#1A3B5D', // Ganancia
           '#FFA500', // Prestado
           '#4CAF50', // Capital
           '#3B82F6', // Interés
-          '#EF4444'  // Mora
+          '#EF4444', // Mora
         ],
         borderRadius: 8,
-      }
-    ]
+      },
+    ],
   };
 
   const options = {
     responsive: true,
     plugins: {
       legend: { position: 'top' as const },
-      title: { display: true, text: 'Resumen Financiero' }
+      title: { display: true, text: 'Resumen Financiero' },
     },
     scales: {
       y: {
         beginAtZero: true,
         ticks: {
-          callback: (value: any) => `$${value}`
-        }
-      }
-    }
+          callback: (value: any) => `$${value}`,
+        },
+      },
+    },
   };
 
   return (

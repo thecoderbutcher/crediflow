@@ -29,11 +29,11 @@ const ListLoanCustomer = ({ listLoan }: { listLoan: Loan[] }) => {
               </p>
             </div>
             <div className="flex flex-col w-full items-end justify-center">
-                <p className="font-light text-xs">Fecha de prestamo</p>
-                <p className="font-light text-xs">
-                  {loan.createdAt.toLocaleDateString('es-AR')}
-                </p>
-              </div>
+              <p className="font-light text-xs">Fecha de prestamo</p>
+              <p className="font-light text-xs">
+                {loan.createdAt.toLocaleDateString('es-AR')}
+              </p>
+            </div>
           </div>
           <div>
             <div className="text-xl">

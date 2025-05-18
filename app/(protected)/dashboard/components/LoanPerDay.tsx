@@ -7,7 +7,10 @@ interface PrestamosChartProps {
   data: number[];
 }
 
-export const PrestamosChart: React.FC<PrestamosChartProps> = ({ labels, data }) => {
+export const PrestamosChart: React.FC<PrestamosChartProps> = ({
+  labels,
+  data,
+}) => {
   return (
     <div className="bg-white rounded-xl p-4 shadow w-full max-w-3xl mx-auto my-4">
       <Bar

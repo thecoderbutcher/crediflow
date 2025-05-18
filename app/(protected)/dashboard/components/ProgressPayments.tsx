@@ -1,6 +1,4 @@
-
-import { FaCalendarDay, FaCalendarTimes } from "react-icons/fa";
-
+import { FaCalendarDay, FaCalendarTimes } from 'react-icons/fa';
 
 const ProgressPayments = () => {
   return (
@@ -20,18 +18,16 @@ const ProgressPayments = () => {
         <div className="flex items-center gap-2">
           <p className="text-4xl font-semibold">$0</p>
           <p className="text-base font-light">de $0</p>
-        </div> 
+        </div>
         <div className="w-full max-w-md">
           <div className="mb-2 text-sm text-gray-700 flex justify-between">
             <span>Cobrado: $00</span>
             <span>Total: $00</span>
           </div>
           <div className="w-full h-4 border border-primary/60 bg-neutral rounded-full overflow-hidden">
-            <div
-              className="h-full  transition-all duration-300" 
-            />
-          </div> 
-        </div> 
+            <div className="h-full  transition-all duration-300" />
+          </div>
+        </div>
         <div className="flex items-center justify-around gap-2 text-sm">
           <div className="flex flex-col justify-start border-l-4 border-l-warning pl-2 rounded-md">
             <p>Pendiente</p>
@@ -44,7 +40,7 @@ const ProgressPayments = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProgressPayments
+export default ProgressPayments;

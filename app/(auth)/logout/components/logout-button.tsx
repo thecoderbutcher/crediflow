@@ -1,15 +1,15 @@
-import { signOut } from "@/auth"
-const LogoutButton = async () => { 
+import { signOut } from '@/auth';
+const LogoutButton = async () => {
   return (
-    <form 
+    <form
       action={async () => {
-        "use server"
+        'use server';
         await signOut();
       }}
     >
-      <button type="submit">Logout</button> 
+      <button type="submit">Logout</button>
     </form>
-  )
-}
+  );
+};
 
-export default LogoutButton
+export default LogoutButton;

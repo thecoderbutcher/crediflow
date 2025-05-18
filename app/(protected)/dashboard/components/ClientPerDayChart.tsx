@@ -7,7 +7,10 @@ interface ClientesChartProps {
   data: number[];
 }
 
-export const ClientesChart: React.FC<ClientesChartProps> = ({ labels, data }) => {
+export const ClientesChart: React.FC<ClientesChartProps> = ({
+  labels,
+  data,
+}) => {
   return (
     <div className="bg-white rounded-xl p-4 shadow w-full max-w-3xl mx-auto my-4">
       <Bar

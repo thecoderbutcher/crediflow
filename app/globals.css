@@ -1,43 +1,43 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-@theme { 
-    --color-primary: #1E90FF;
-    --color-secondary: #1F2937;
-    --color-accent: #67E8F9;
-    --color-light: #F3F4F6;
-    --color-darkText: #FFFFFF;
-    --color-mutedText: #D1D5DB;
-    --color-success: #10B981;
-    --color-warning: #FBBF24;
-    --color-danger: #EF4444;
+@theme {
+  --color-primary: #1e90ff;
+  --color-secondary: #1f2937;
+  --color-accent: #67e8f9;
+  --color-light: #f3f4f6;
+  --color-darkText: #ffffff;
+  --color-mutedText: #d1d5db;
+  --color-success: #10b981;
+  --color-warning: #fbbf24;
+  --color-danger: #ef4444;
 }
 
-body{
-    @apply bg-secondary/10 text-secondary/80;
+body {
+  @apply bg-secondary/10 text-secondary/80;
 }
 
 input {
-    @apply border border-gray-200 h-10 px-4 rounded-md text-sm focus:outline-none focus:border-gray-400;
+  @apply border border-gray-200 h-10 px-4 rounded-md text-sm focus:outline-none focus:border-gray-400;
 }
 
 /* Chrome, Safari, Edge */
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
 /* Firefox */
-input[type="number"] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
-select{
+select {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   background-image: none;
-} 
+}
 
-button{
-    @apply cursor-pointer;
+button {
+  @apply cursor-pointer;
 }

@@ -1,14 +1,14 @@
-import type { Metadata } from "next";
-import { Roboto_Condensed } from "next/font/google";
-import "./globals.css"; 
+import type { Metadata } from 'next';
+import { Roboto_Condensed } from 'next/font/google';
+import './globals.css';
 const robotoCondensed = Roboto_Condensed({
-  variable: "--font-roboto-condensed",
-  subsets: ["latin"],
-}) 
+  variable: '--font-roboto-condensed',
+  subsets: ['latin'],
+});
 
 export const metadata: Metadata = {
-  title: "MCD Detailing",
-  description: "Detailing de autos a mano",
+  title: 'MCD Detailing',
+  description: 'Detailing de autos a mano',
 };
 
 export default function RootLayout({

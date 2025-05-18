@@ -10,7 +10,7 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: crediflow
     ports:
-      - "5435:5432"
+      - '5435:5432'
     volumes:
       - crediflow-data:/var/lib/postgresql/data
 

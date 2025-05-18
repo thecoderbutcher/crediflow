@@ -1,9 +1,5 @@
-
-
 const DayPaymentChart = () => {
-  return (
-    <div>DayPaymentChart</div>
-  )
-}
+  return <div>DayPaymentChart</div>;
+};
 
-export default DayPaymentChart
+export default DayPaymentChart;

@@ -1,12 +1,12 @@
-import Navbar from "./components/Navbar"
+import Navbar from './components/Navbar';
 
-const AdminLayout = ({children}: {children: React.ReactNode}) => {
-    return (
+const AdminLayout = ({ children }: { children: React.ReactNode }) => {
+  return (
     <div className="flex flex-col mb-[60px] overflow-y-scroll">
-        <Navbar />
-        {children}
+      <Navbar />
+      {children}
     </div>
-    )
-}
+  );
+};
 
-export default AdminLayout
+export default AdminLayout;
