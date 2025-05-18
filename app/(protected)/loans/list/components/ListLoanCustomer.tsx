@@ -21,16 +21,19 @@ const ListLoanCustomer = ({ listLoan }: { listLoan: Loan[] }) => {
           href={`/loans/view/${loan.id}`}
           className={`flex gap-2 items-center justify-between px-4 py-2 bg-white mx-2 rounded-lg shadow-md border-l-4 ${loan.statusId == 1 ? 'border-l-warning' : loan.statusId == 2 ? 'border-l-success' : 'border-l-danger'}`}
         >
-          <div className="flex flex-col w-full">
-            <div className="flex items-center justify-between w-full pr-4">
+          <div className="flex w-full">
+            <div className="flex flex-col w-full pr-4">
               <p className="text-xl font-semibold">${loan.amount}</p>
               <p className="font-light text-xs">
-                {loan.createdAt.toDateString()}
+                Cuotas: 1/{loan.totalInstallments} | Interes: {loan.interest}%
               </p>
             </div>
-            <p className="font-light text-sm">
-              Coutas: 1/{loan.totalInstallments} | Intereses: {loan.interest}
-            </p>
+            <div className="flex flex-col w-full items-end justify-center">
+                <p className="font-light text-xs">Fecha de prestamo</p>
+                <p className="font-light text-xs">
+                  {loan.createdAt.toLocaleDateString('es-AR')}
+                </p>
+              </div>
           </div>
           <div>
             <div className="text-xl">

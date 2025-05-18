@@ -12,7 +12,7 @@ const page = async ({params}: pageProps) => {
     const customer = await viewCustomers(id)
     const loanData = await listLoanCustomer(id);
     return (
-        <div className='flex flex-col h-screen w-full'>
+        <div className='flex flex-col h-full pb-4 w-full'>
             <Header title={`Cliente: ${customer?.idperson}`} url='/customers'/>
             {customer && <Profile customer={customer} />}
             <ListLoanCustomer listLoan={loanData}/>
