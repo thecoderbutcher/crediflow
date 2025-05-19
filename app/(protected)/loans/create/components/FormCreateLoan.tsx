@@ -107,7 +107,7 @@ const FormCreateLoan = ({ loanType, paymentType }: FormCreateLoanProps) => {
       >
         <input
           {...register('interest')}
-          type="text"
+          type="number"
           name="interest"
           placeholder="Ingresar porcentaje de intereses"
           className=" w-full outline-none focus:outline-none active:outline-none border-none"

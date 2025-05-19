@@ -63,7 +63,7 @@ export const create = async (values: z.infer<typeof LoanSchema>, customerId: str
     await db.loan.create({ data: loanData });
     return { success: 'Préstamo creado con éxito' };
   }
-  catch (err) { return { error: 'Error al crear el préstamo' + err } }
+  catch { return { error: 'Error al crear el préstamo'} }
 }
 
 export const getLoanByCustomerID = async (id: string) => {
