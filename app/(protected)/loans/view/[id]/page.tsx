@@ -14,7 +14,7 @@ const page = async ({ params }: pageProps) => {
   const installments = await viewInstallments(Number(id));
 
   return (
-    <div className="flex flex-col h-screen w-full">
+    <div className="flex flex-col w-full">
       <Header
         title={`Prestamo: ${loans?.customer?.firstName} ${loans?.customer?.lastName}`}
         url={`/customers/view/${loans?.customerId}`}

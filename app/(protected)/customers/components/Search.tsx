@@ -3,12 +3,12 @@ import { useCustomersStore } from '../store/customerStore';
 const Search = () => {
   const { setFilterText } = useCustomersStore();
   return (
-    <form>
-      <div className="flex items-center justify-between w-full rounded-md bg-darkText border px-2 border-primary/50 shadow-md">
+    <form className='group'>
+      <div className="flex items-center justify-between w-full rounded-md bg-darkText border px-2 border-secondary/20 shadow-md">
         <input
           type="text"
           placeholder="Buscar cliente"
-          className="focus:outline-none border-none rounded-lg"
+          className="w-full border-none rounded-lg"
           onChange={e => setFilterText(e.target.value)}
         />
         <IoIosSearch className="text-2xl text-gray-400" />

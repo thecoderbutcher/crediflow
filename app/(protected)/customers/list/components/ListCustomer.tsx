@@ -28,12 +28,12 @@ const ListCustomer = ({ listCustomer }: { listCustomer: Customer[] }) => {
   }
 
   return (
-    <div className="flex flex-col w-full mt-2">
+    <div className="flex flex-col w-full h-full pb-2">
       {customers.map((customer, index) => (
         <div key={index} className="px-1 mt-2 w-full">
           <Link
             href={`/customers/view/${customer.id}`}
-            className="flex items-center justify-between gap-2 bg-white px-4 py-2 rounded-lg shadow-lg"
+            className="flex items-center justify-between gap-2 bg-white px-4 py-2 rounded-lg shadow-md"
           >
             <div className="flex gap-2 items-center">
               <div className="bg-gray-300 p-1 rounded-md">
