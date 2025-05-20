@@ -1,12 +1,12 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaCircleCheck, FaTriangleExclamation } from 'react-icons/fa6';
+import { useEffect } from 'react';
+import { Customer } from '@prisma/client';
 import { FaUserAltSlash } from 'react-icons/fa';
 import { IoIosArrowForward } from 'react-icons/io';
 import { useCustomersStore } from '../../store/customerStore';
-import { useEffect } from 'react';
-import { Customer } from '@prisma/client';
+import { FaCircleCheck, FaTriangleExclamation } from 'react-icons/fa6';
 const ListCustomer = ({ listCustomer }: { listCustomer: Customer[] }) => {
   const { setCustomers, customersFiltered } = useCustomersStore();
 

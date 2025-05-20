@@ -1,14 +1,19 @@
+'use client';
 import { MdCheckBoxOutlineBlank } from 'react-icons/md';
 import { Installments } from '@prisma/client';
-
+import { useInstallmentStore } from '../store/installmentsStore';
 const ListInstallments = ({
   installments,
 }: {
   installments: Installments[];
 }) => {
+  const { activeStatuses } = useInstallmentStore();
+  const filteredInstallments = installments.filter((installment) =>
+    activeStatuses.includes(installment.statusId)
+  );
   return (
     <div className="flex flex-col gap-2 pb-4 px-2">
-      {installments.map((installment, index) => (
+      {filteredInstallments.map((installment, index) => (
         <div
           key={index}
           className={`flex justify-between items-center bg-darkText py-2 px-4 rounded-lg shadow-md border-l-4 ${installment.statusId == 1 ? 'border-l-warning' : installment.statusId == 2 ? 'border-l-success' : 'border-l-danger'}`}

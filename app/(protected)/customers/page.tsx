@@ -7,12 +7,7 @@ import { listCustomers } from './list/action/list';
 
 const page = async () => {
   const session = await auth();
-  const customerList = (await listCustomers(session?.user.id)).map(
-    customer => ({
-      ...customer,
-      statusPay: customer.statusPay ?? false, // Default to false if null
-    })
-  );
+  const customerList = await listCustomers(session?.user.id)
 
   return (
     <div className="flex flex-col gap-2 w-full">

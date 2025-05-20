@@ -72,6 +72,7 @@ model Customer {
   address    String
   phone      String
   notes      String?
+  status     Boolean  @default(true)
   statusPay  Boolean?
   employeeId String
   loans      Loan[]
@@ -125,6 +126,7 @@ model LoanStatus {
 model Installments {
   id             Int        @id @default(autoincrement())
   value          Float
+  paidDate       DateTime?
   expirationDate DateTime
   loanId         Int
   loan           Loan       @relation(fields: [loanId], references: [id])
