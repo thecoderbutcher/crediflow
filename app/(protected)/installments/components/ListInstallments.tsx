@@ -37,12 +37,18 @@ const ListInstallments = ({
       {filteredInstallments.map((installment, index) => (
         <div
           key={index}
-          className={`flex justify-between items-center bg-darkText py-2 px-4 rounded-lg shadow-md border-l-4 ${installment.statusId == 1 ? 'border-l-warning' : installment.statusId == 2 ? 'border-l-success' : 'border-l-danger'}`}
+          className={`relative z-0 flex justify-between items-center bg-darkText py-2 px-4 rounded-lg shadow-md border-l-4 ${installment.statusId == 1 ? 'border-l-warning' : installment.statusId == 2 ? 'border-l-success' : 'border-l-danger'}`}
         >
-          <div className="flex w-full pr-4 items-center justify-between">
+          <div className={`absolute top-0 -left-1 rounded-full w-4 h-4 text-center flex items-center justify-center ${installment.statusId == 1 ? 'bg-warning' : installment.statusId == 2 ? 'bg-success' : 'bg-danger'} text-xs font-semibold text-white`}>
+            {index + 1}
+          </div>
+          <div className="flex w-full pr-2 items-center justify-between">
             <div className="flex flex-col">
-              <p className="font-light text-sm">Saldo a pagar</p>
-              <p>${installment.value}</p>
+              <p className="font-extralight text-sm">
+                {installment.statusId !== 2 ? "Saldo a pagar" : "Saldo pagado"}
+
+              </p>
+              <p className='text-xl font-semibold'>${installment.value}</p>
             </div>
             <div className="flex flex-col justify-end items-end">
               <p className="font-light text-xs">

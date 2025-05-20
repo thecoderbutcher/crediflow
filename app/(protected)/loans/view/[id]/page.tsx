@@ -1,6 +1,5 @@
 import Header from '@/app/(protected)/components/Header';
-import LoanInfo from '../components/LoanInfo';
-import FilterQuota from '@/app/(protected)/installments/components/FilterInstallments';
+import LoanInfo from '../components/LoanInfo'; 
 import ListInstallments from '@/app/(protected)/installments/components/ListInstallments';
 import { viewInstallments } from '@/app/(protected)/installments/action/installments';
 import { viewLoan } from '../action/view';
@@ -20,7 +19,6 @@ const page = async ({ params }: pageProps) => {
         url={`/customers/view/${loans?.customerId}`}
       />
       {loans && <LoanInfo loan={loans} />}
-      <FilterQuota />
       {installments && <ListInstallments installments={installments} />}
     </div>
   );
