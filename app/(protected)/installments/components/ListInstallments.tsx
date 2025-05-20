@@ -1,16 +1,37 @@
 'use client';
-import { MdCheckBoxOutlineBlank } from 'react-icons/md';
+import { MdCheckBoxOutlineBlank, MdCheckBox } from 'react-icons/md';
 import { Installments } from '@prisma/client';
 import { useInstallmentStore } from '../store/installmentsStore';
+import ConfirmModal from '../../components/ConfirmModal';
+import { useState } from 'react';
+import { payInstallment } from '../action/installments';
 const ListInstallments = ({
   installments,
 }: {
   installments: Installments[];
 }) => {
+  const [installmentToPay, setInstallmentToPay] = useState(0);
+  const [showModal, setShowModal] = useState(false);
   const { activeStatuses } = useInstallmentStore();
-  const filteredInstallments = installments.filter((installment) =>
+
+  const filteredInstallments = installments.filter(installment =>
     activeStatuses.includes(installment.statusId)
   );
+
+  const handlePayment = (installmentId: number) => {
+    setInstallmentToPay(installmentId);
+    setShowModal(true);
+  };
+
+  const confirmPayment = async () => {
+    setShowModal(false);
+    await payInstallment(installmentToPay);
+  };
+
+  const cancelPayment = () => {
+    setShowModal(false);
+  };
+
   return (
     <div className="flex flex-col gap-2 pb-4 px-2">
       {filteredInstallments.map((installment, index) => (
@@ -24,17 +45,41 @@ const ListInstallments = ({
               <p>${installment.value}</p>
             </div>
             <div className="flex flex-col justify-end items-end">
-              <p className="font-light text-xs">Fecha a vencer</p>
+              <p className="font-light text-xs">
+                {installment.statusId !== 2
+                  ? 'Fecha a vencer'
+                  : 'Fecha de pago'}
+              </p>
               <p className="text-xs">
-                {installment.expirationDate.toLocaleDateString('es-AR')}
+                {installment.statusId !== 2
+                  ? installment.expirationDate.toLocaleDateString('es-AR')
+                  : installment.paidDate
+                    ? installment.paidDate.toLocaleDateString('es-AR')
+                    : 'Sin fecha'}
               </p>
             </div>
           </div>
           <div className="flex flex-col items-center justify-center">
-            <MdCheckBoxOutlineBlank className="text-2xl" />
+            {installment.statusId !== 2 ? (
+              <MdCheckBoxOutlineBlank
+                className="text-2xl"
+                onClick={() => handlePayment(installment.id)}
+              />
+
+            ): (
+              <MdCheckBox className="text-2xl text-success" />
+            )}
           </div>
         </div>
       ))}
+      {showModal && (
+        <ConfirmModal
+          title="Confirmar Pago"
+          message="¿Desea confirmar el pago de la cuota?"
+          onConfirm={confirmPayment}
+          onCancel={cancelPayment}
+        />
+      )}
     </div>
   );
 };
