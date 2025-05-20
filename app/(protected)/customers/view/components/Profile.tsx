@@ -15,12 +15,14 @@ interface Customer {
     address: string;
     phone: string;
     email: string;
+    status: boolean;
   };
 }
 
 const Profile = ({ customer }: Customer) => {
   const [showBlockModal, setShowBlockModal] = useState(false);
   const [showUnblockModal, setShowUnblockModal] = useState(false);
+  const [status, setStatus] = useState(customer.status);
   const { customerId, setCustomerId, setCustomerName } = useCustomersStore();
 
   useEffect(() => {
@@ -42,6 +44,7 @@ const Profile = ({ customer }: Customer) => {
   const confirmBlockCustomer = async () => {
     setShowBlockModal(false);
     await blockCustomer(customerId);
+    setStatus(!status);
   };
 
   const handleUnlockCustomer = async () => {
@@ -50,6 +53,7 @@ const Profile = ({ customer }: Customer) => {
   const confirmUnblockCustomer = async () => {
     setShowUnblockModal(false);
     await unblockCustomer(customerId);
+    setStatus(!status);
   };
 
   return (
@@ -73,7 +77,7 @@ const Profile = ({ customer }: Customer) => {
             <p className="text-base font-light">{customer?.email}</p>
           </div>
         </div>
-        {customer.status && (
+        {status && (
           <div className="flex flex-col gap-2 ">
             <div className="bg-darkText border border-secondary p-1 rounded-md shadow-md">
               <a href={`https://wa.me/${customer?.phone}`}>
@@ -93,7 +97,7 @@ const Profile = ({ customer }: Customer) => {
         )}
       </div>
       <div className="flex items-center justify-center gap-10">
-        {customer.status ? (
+        {status ? (
           <Link
             href={'/loans/create'}
             className="flex items-center bg-primary gap-1 text-darkText border border-primary px-2 py-1 rounded-lg shadow-md"

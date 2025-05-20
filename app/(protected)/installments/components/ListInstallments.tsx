@@ -10,26 +10,24 @@ const ListInstallments = ({
 }: {
   installments: Installments[];
 }) => {
-  const [installmentToPay, setInstallmentToPay] = useState(0);
+  const [installmentIdToPay, setInstallmentIdToPay] = useState(0);
+  const [localInstallments, setLocalInstallments] = useState<Installments[]>(installments);
   const [showModal, setShowModal] = useState(false);
   const { activeStatuses } = useInstallmentStore();
 
-  const filteredInstallments = installments.filter(installment =>
+  const filteredInstallments = localInstallments.filter(installment =>
     activeStatuses.includes(installment.statusId)
   );
 
   const handlePayment = (installmentId: number) => {
-    setInstallmentToPay(installmentId);
+    setInstallmentIdToPay(installmentId);
     setShowModal(true);
   };
 
   const confirmPayment = async () => {
     setShowModal(false);
-    await payInstallment(installmentToPay);
-  };
-
-  const cancelPayment = () => {
-    setShowModal(false);
+    const updateInstallment =await payInstallment(installmentIdToPay);
+    setLocalInstallments(localInstallments.map(installment => installment.id === installmentIdToPay ? updateInstallment : installment));
   };
 
   return (
@@ -39,16 +37,17 @@ const ListInstallments = ({
           key={index}
           className={`relative z-0 flex justify-between items-center bg-darkText py-2 px-4 rounded-lg shadow-md border-l-4 ${installment.statusId == 1 ? 'border-l-warning' : installment.statusId == 2 ? 'border-l-success' : 'border-l-danger'}`}
         >
-          <div className={`absolute top-0 -left-1 rounded-full w-4 h-4 text-center flex items-center justify-center ${installment.statusId == 1 ? 'bg-warning' : installment.statusId == 2 ? 'bg-success' : 'bg-danger'} text-xs font-semibold text-white`}>
-            {index + 1}
+          <div
+            className={`absolute top-0 -left-1 rounded-full w-4 h-4 text-center flex items-center justify-center ${installment.statusId == 1 ? 'bg-warning' : installment.statusId == 2 ? 'bg-success' : 'bg-danger'} text-xs font-semibold text-white`}
+          >
+            {installment.i_number}
           </div>
           <div className="flex w-full pr-2 items-center justify-between">
             <div className="flex flex-col">
               <p className="font-extralight text-sm">
-                {installment.statusId !== 2 ? "Saldo a pagar" : "Saldo pagado"}
-
+                {installment.statusId !== 2 ? 'Saldo a pagar' : 'Saldo pagado'}
               </p>
-              <p className='text-xl font-semibold'>${installment.value}</p>
+              <p className="text-xl font-semibold">${installment.value}</p>
             </div>
             <div className="flex flex-col justify-end items-end">
               <p className="font-light text-xs">
@@ -82,7 +81,9 @@ const ListInstallments = ({
           title="Confirmar Pago"
           message="¿Desea confirmar el pago de la cuota?"
           onConfirm={confirmPayment}
-          onCancel={cancelPayment}
+          onCancel={() => {
+            setShowModal(false);
+          }}
         />
       )}
     </div>

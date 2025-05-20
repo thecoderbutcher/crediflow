@@ -5,6 +5,7 @@ import { getLoanByCustomerID } from "@/app/(protected)/loans/create/action/creat
 interface InstallmentData {
   loanId: number
   value: number
+  i_number: number
   expirationDate: Date
 }
 
@@ -29,6 +30,7 @@ export const createInstallments = async (customerId: string) => {
 
     const installmentData: InstallmentData = {
       loanId: id,
+      i_number: i + 1,
       value: installmentAmount,
       expirationDate: dateExpiration
     }

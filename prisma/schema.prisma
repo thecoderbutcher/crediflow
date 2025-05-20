@@ -125,6 +125,7 @@ model LoanStatus {
 
 model Installments {
   id             Int        @id @default(autoincrement())
+  i_number       Int
   value          Float
   paidDate       DateTime?
   expirationDate DateTime
