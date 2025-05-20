@@ -1,11 +1,12 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaMoneyBillTransfer, FaWhatsapp } from 'react-icons/fa6';
+import { FaMoneyBillTransfer, FaWhatsapp, FaUserLock } from 'react-icons/fa6';
 import { MdModeEdit, MdBlock } from 'react-icons/md';
 import { useCustomersStore } from '../../store/customerStore';
-import { useEffect } from 'react';
-
+import { useEffect, useState } from 'react';
+import ConfirmModal from '@/app/(protected)/components/ConfirmModal';
+import { blockCustomer, unblockCustomer } from '../action/view';
 interface Customer {
   customer: {
     id: string;
@@ -18,6 +19,8 @@ interface Customer {
 }
 
 const Profile = ({ customer }: Customer) => {
+  const [showBlockModal, setShowBlockModal] = useState(false);
+  const [showUnblockModal, setShowUnblockModal] = useState(false);
   const { customerId, setCustomerId, setCustomerName } = useCustomersStore();
 
   useEffect(() => {
@@ -31,6 +34,23 @@ const Profile = ({ customer }: Customer) => {
     customer?.lastName,
     setCustomerName,
   ]);
+
+  const handleBlockButton = () => {
+    setShowBlockModal(true);
+  };
+
+  const confirmBlockCustomer = async () => {
+    setShowBlockModal(false);
+    await blockCustomer(customerId);
+  };
+
+  const handleUnlockCustomer = async () => {
+    setShowUnblockModal(true);
+  };
+  const confirmUnblockCustomer = async () => {
+    setShowUnblockModal(false);
+    await unblockCustomer(customerId);
+  };
 
   return (
     <div className="flex flex-col gap-2 bg-light px-4 py-2 rounded-b-4xl shadow-md">
@@ -53,29 +73,57 @@ const Profile = ({ customer }: Customer) => {
             <p className="text-base font-light">{customer?.email}</p>
           </div>
         </div>
-        <div className="flex flex-col gap-2 ">
-          <div className="bg-darkText border border-secondary p-1 rounded-md shadow-md">
-            <a href={`https://wa.me/${customer?.phone}`}>
-              <FaWhatsapp className="text-success" />
-            </a>
+        {customer.status && (
+          <div className="flex flex-col gap-2 ">
+            <div className="bg-darkText border border-secondary p-1 rounded-md shadow-md">
+              <a href={`https://wa.me/${customer?.phone}`}>
+                <FaWhatsapp className="text-success" />
+              </a>
+            </div>
+            <div className="bg-darkText border border-secondary p-1 rounded-md shadow-md">
+              <MdModeEdit className=" " />
+            </div>
+            <div className="bg-darkText border border-secondary p-1 rounded-md shadow-md">
+              <MdBlock
+                className="text-danger/80"
+                onClick={() => handleBlockButton()}
+              />
+            </div>
           </div>
-          <div className="bg-darkText border border-secondary p-1 rounded-md shadow-md">
-            <MdModeEdit className=" " />
-          </div>
-          <div className="bg-darkText border border-secondary p-1 rounded-md shadow-md">
-            <MdBlock className="text-danger/80" />
-          </div>
-        </div>
+        )}
       </div>
       <div className="flex items-center justify-center gap-10">
-        <Link
-          href={'/loans/create'}
-          className="flex items-center bg-primary gap-1 text-darkText border border-primary px-2 py-1 rounded-lg shadow-md"
-        >
-          <FaMoneyBillTransfer className="text-2xl font-extrabold" />
-          <p>Agregar prestamo</p>
-        </Link>
+        {customer.status ? (
+          <Link
+            href={'/loans/create'}
+            className="flex items-center bg-primary gap-1 text-darkText border border-primary px-2 py-1 rounded-lg shadow-md"
+          >
+            <FaMoneyBillTransfer className="text-2xl font-extrabold" />
+            <p>Agregar prestamo</p>
+          </Link>
+        ) : (
+          <button className="flex items-center bg-danger gap-1 text-darkText border border-danger px-2 py-1 rounded-lg shadow-md" onClick={handleUnlockCustomer}>
+            <FaUserLock className="text-2xl font-extrabold" />
+            <p>Desbloquear cliente</p>
+          </button>
+        )}
       </div>
+      {showBlockModal && (
+        <ConfirmModal
+          title="¿Deseas bloquear al cliente?"
+          message="El cliente no podra realizar prestamos"
+          onConfirm={confirmBlockCustomer}
+          onCancel={() => setShowBlockModal(false)}
+        />
+      )}
+      {showUnblockModal && (
+        <ConfirmModal
+          title="¿Deseas desbloquear al cliente?"
+          message="El cliente podra pedir prestamos"
+          onConfirm={confirmUnblockCustomer}
+          onCancel={() => setShowUnblockModal(false)}
+        />
+      )}
     </div>
   );
 };

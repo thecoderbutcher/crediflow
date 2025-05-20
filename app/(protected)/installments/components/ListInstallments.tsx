@@ -65,8 +65,7 @@ const ListInstallments = ({
                 className="text-2xl"
                 onClick={() => handlePayment(installment.id)}
               />
-
-            ): (
+            ) : (
               <MdCheckBox className="text-2xl text-success" />
             )}
           </div>
