@@ -26,9 +26,9 @@ const ListPayments = ({ payments }: ListPaymentsProps) => {
         <Link
           key={index}
           href={`/payments/view/${payment.id}`}
-          className="flex gap-2 items-center justify-between px-4 py-2 bg-white mx-2 rounded-lg shadow-md"
+          className="flex gap-2 items-center justify-between px-2 py-2 bg-white mx-2 rounded-lg shadow-md border-l-4 border-success"
         >
-          <div className="flex flex-col w-full">
+          <div className="flex flex-col">
             <p className="flex items-center gap-1 text-2xl font-semibold">
               ${payment.value}
             </p>
@@ -38,9 +38,9 @@ const ListPayments = ({ payments }: ListPaymentsProps) => {
               </p>
             </div>
           </div>
-          <div className="flex items-center">
-            <div className="flex flex-col w-full ">
-              <p className="font-light text-xs">Fecha:</p>
+          <div className="flex gap-1 items-center">
+            <div className="flex flex-col w-full justify-end items-end">
+              <p className="font-light text-xs">Fecha de pago:</p>
               <p className="font-light text-xs">
                 {payment.paidDate?.toLocaleDateString('es-AR')}
               </p>
