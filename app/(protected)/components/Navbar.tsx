@@ -27,7 +27,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link href="/loans">
+          <Link href="/payments">
             <FaMoneyCheckDollar />
           </Link>
         </li>
