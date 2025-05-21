@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { FaMoneyBillTransfer } from 'react-icons/fa6';
 import { IoIosArrowForward } from 'react-icons/io';
 interface Payment {
   id: number;
@@ -20,6 +21,11 @@ interface ListPaymentsProps {
 }
 
 const ListPayments = ({ payments }: ListPaymentsProps) => {
+  if(payments.length === 0) {
+    return(
+      <div className='flex gap-2 items-center justify-center mt-4 text-secondary/30 text-xl'><FaMoneyBillTransfer/>Aun no has recibido pagos</div>
+    )
+  }
   return (
     <div className="flex flex-col gap-3 mt-4">
       {payments?.map((payment, index) => (
