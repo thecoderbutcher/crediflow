@@ -43,6 +43,7 @@ export const LoginForm = () => {
       });
     });
   };
+  console.log()
   return (
     <form
       className="flex flex-col gap-4 w-full"
@@ -59,6 +60,7 @@ export const LoginForm = () => {
           {...register('email')}
           type="email"
           name="email"
+          autoComplete="email"
           id="email"
           placeholder="ejemplo@email.com"
           disabled={isSubmitting}
@@ -81,6 +83,8 @@ export const LoginForm = () => {
           name="password"
           id="password"
           placeholder="********"
+          required
+          autoComplete="current-password"
           disabled={isPending}
           className={`${errors.password ? 'outline-danger outline-1' : ''}`}
         />

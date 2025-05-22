@@ -15,7 +15,7 @@ export const listPayments = async () => {
               employee: {
                 select: {
                   id: true,
-                  name: true,
+                  firstName: true,
                 },
               },
             },

@@ -19,8 +19,10 @@ interface PaymentInfoProps {
         address: string;
         email: string;
         employee: {
-          name: string;
+          firstName: string;
+          lastName: string;
           email: string;
+          phone:string;
         };
       };
     };
@@ -109,11 +111,11 @@ const PaymentInfo = ({ detail }: PaymentInfoProps) => {
           <div className="flex justify-around w-full">
             <div className="flex flex-col w-full">
               <p className="font-semibold">Nombre</p>
-              <p className="">{detail.loan.customer.employee.name}</p>
+              <p className="">{detail.loan.customer.employee.firstName} {detail.loan.customer.employee.lastName}</p>
             </div>
             <div className="flex flex-col items-end w-full">
               <p className="font-semibold">Telefono</p>
-              <p>{detail.loan.customer.employee.email}</p>
+              <p>{detail.loan.customer.employee.phone}</p>
             </div>
           </div>
         </div>
