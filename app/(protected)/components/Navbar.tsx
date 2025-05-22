@@ -1,21 +1,21 @@
 import Link from 'next/link';
 import { MdDashboard } from 'react-icons/md';
-import { IoPeopleSharp, IoSettingsSharp, IoMenu } from 'react-icons/io5';
-import { FaMoneyCheckDollar } from 'react-icons/fa6';
+import { IoSettingsSharp, IoMenu } from 'react-icons/io5';
+import { FaMoneyCheckDollar, FaUserGear, FaUserGroup } from 'react-icons/fa6';
 
 const Navbar = () => {
   return (
     <nav className="fixed z-10 bottom-0 p-4 bg-light rounded-t-xl w-full text-3xl">
       {/* Desktop Menu */}
-      <ul className="hidden lg:flex gap-12 w-full justify-center">
+      {/* <ul className="hidden lg:flex gap-12 w-full justify-center">
         <li>
           <Link href="/dashboard">
             <MdDashboard />
           </Link>
         </li>
-      </ul>
+      </ul> */}
       {/* Mobile Menu */}
-      <ul className="flex gap-12 w-full justify-center lg:hidden">
+      <ul className="flex gap-12 w-full justify-center items-center lg:hidden text-3xl">
         <li>
           <Link href="/dashboard">
             <MdDashboard />
@@ -23,7 +23,7 @@ const Navbar = () => {
         </li>
         <li>
           <Link href="/customers">
-            <IoPeopleSharp />
+            <FaUserGroup />
           </Link>
         </li>
         <li>
@@ -32,13 +32,13 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link href="/admin/profile">
-            <IoSettingsSharp />
+          <Link href="/menu">
+            <FaUserGear />
           </Link>
         </li>
         <li>
-          <Link href="/menu">
-            <IoMenu />
+          <Link href="/admin/profile">
+            <IoSettingsSharp />
           </Link>
         </li>
       </ul>

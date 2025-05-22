@@ -26,11 +26,10 @@ export const listPayments = async () => {
   });
 };
 
-/* export const listPayments = async () => {
-  return await db.installments.findMany({
+export const paymentDetails = async (id: number) => {
+  return await db.installments.findUnique({
     where: {
-      statusId: 2, // payment id is paid
-      confirmationPaid: false,
+      id,
     },
     include: {
       loan: {
@@ -49,4 +48,17 @@ export const listPayments = async () => {
     },
   });
 };
- */
+
+export const confirmPayment = async (installmentId: number) => {
+  return await db.installments.update({
+    where: { id: installmentId },
+    data: {confirmationPaid: true},
+  });
+};
+
+export const rejectPayment = async (installmentId: number) => {
+  return await db.installments.update({
+    where: { id: installmentId },
+    data: {statusId: 1 },
+  });
+};
