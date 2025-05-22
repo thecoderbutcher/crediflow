@@ -1,4 +1,5 @@
 import { signOut } from '@/auth';
+import { FaArrowRightToBracket } from "react-icons/fa6";
 const LogoutButton = async () => {
   return (
     <form
@@ -7,7 +8,10 @@ const LogoutButton = async () => {
         await signOut();
       }}
     >
-      <button type="submit">Logout</button>
+      <button type="submit" className='flex items-center justify-center gap-2 bg-darkText shadow-md py-2 px-4 rounded-md'>
+        <FaArrowRightToBracket/>
+        Logout
+        </button>
     </form>
   );
 };

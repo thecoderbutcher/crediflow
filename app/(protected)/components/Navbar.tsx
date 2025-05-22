@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { MdDashboard } from 'react-icons/md';
-import { IoSettingsSharp, IoMenu } from 'react-icons/io5';
+import { IoSettingsSharp } from 'react-icons/io5';
 import { FaMoneyCheckDollar, FaUserGear, FaUserGroup } from 'react-icons/fa6';
 
 const Navbar = () => {
@@ -32,12 +32,12 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link href="/menu">
+          <Link href="/employees">
             <FaUserGear />
           </Link>
         </li>
         <li>
-          <Link href="/admin/profile">
+          <Link href="/settings">
             <IoSettingsSharp />
           </Link>
         </li>

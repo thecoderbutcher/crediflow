@@ -1,4 +1,3 @@
-import LogoutButton from '@/app/(auth)/logout/components/logout-button';
 import Header from '../components/Header';
 import { ClientesChart } from './components/ClientPerDayChart';
 import DayPaymentChart from './components/DayPaymentChart';
@@ -28,7 +27,7 @@ const page = async () => {
       <DayPaymentChart />
       <PrestamosChart labels={labels} data={[4, 7, 5, 8, 6]} />
       <ClientesChart labels={labels} data={[4, 7, 5, 8, 6]} />
-      <LogoutButton />
+
     </div>
   );
 };
