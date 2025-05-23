@@ -6,7 +6,7 @@ import { MdModeEdit, MdBlock } from 'react-icons/md';
 import { useCustomersStore } from '../../store/customerStore';
 import { useEffect, useState } from 'react';
 import ConfirmModal from '@/app/(protected)/components/ConfirmModal';
-import { blockCustomer, unblockCustomer } from '../action/view';
+import { blockCustomer, unblockCustomer } from '../action/view'; 
 interface Customer {
   customer: {
     id: string;

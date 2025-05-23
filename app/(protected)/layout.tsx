@@ -2,7 +2,7 @@ import Navbar from './components/Navbar';
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="flex flex-col mb-[60px] overflow-y-scroll">
+    <div className="flex flex-col mb-[60px] h-screen overflow-y-scroll">
       <Navbar />
       {children}
     </div>
