@@ -12,14 +12,14 @@ import Search from '../list/components/Search';
 const Topbar = () => {
   const [isAlphaFilter, setIsAlphaFilter] = useState(false);
 
-  const handleToggleOrderName = () => { 
+  const handleToggleOrderName = () => {
     setIsAlphaFilter(!isAlphaFilter);
   };
 
   return (
     <ul className="flex gap-2 px-2 w-full items-center text-2xl">
       <li className="bg-darkText border border-secondary/20 shadow-md px-2 py-2 rounded-md">
-        <Link href="/customers/create">
+        <Link href="/employees/create">
           <FaUserPlus />
         </Link>
       </li>
