@@ -7,7 +7,7 @@ const page = () => {
     <AuthCardWrapper
       headerLabel="Confirmacion de email"
       backLabel="Volver"
-      backLink="/"
+      backLink="/login"
     >
       <VerificationForm />
     </AuthCardWrapper>

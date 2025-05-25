@@ -8,14 +8,16 @@ import { useState, useTransition } from 'react';
 import { register as registerAction } from '../action/register';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 
 const RegisterForm = () => {
   const [error, setError] = useState<string | undefined>('');
   const [success, setSuccess] = useState<string | undefined>('');
   const [isPending, startTransition] = useTransition();
-
+  const router = useRouter();
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm<z.infer<typeof RegisterSchema>>({
@@ -23,7 +25,7 @@ const RegisterForm = () => {
     defaultValues: {
       email: '',
       password: '',
-      name: '',
+      firstName: '',
     },
   });
   const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
@@ -32,24 +34,31 @@ const RegisterForm = () => {
 
     startTransition(() => {
       registerAction(values).then(data => {
-        setError(data?.error);
-        setSuccess(data?.success);
+        if(data.error){
+          setError(data?.error);
+        } else{
+          setSuccess(data?.success);
+          setTimeout(() => {
+            router.push(`/login`);
+            reset();
+          }, 1000);
+        }
       });
     });
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">
-        <label htmlFor="name">Nombre</label>
+        <label htmlFor="firstName">Nombre</label>
         <input
           type="text"
-          {...register('name')}
-          name="name"
+          {...register('firstName')}
+          name="firstName"
           disabled={isPending}
           placeholder="John Doe"
         />
-        {errors.name && (
-          <p className="text-sm text-danger">{errors.name.message}</p>
+        {errors.firstName && (
+          <p className="text-sm text-danger">{errors.firstName.message}</p>
         )}
       </div>
       <div className="flex flex-col gap-2">

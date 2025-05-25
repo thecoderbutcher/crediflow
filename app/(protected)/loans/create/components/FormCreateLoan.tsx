@@ -52,7 +52,7 @@ const FormCreateLoan = ({ loanType, paymentType }: FormCreateLoanProps) => {
           setTimeout(() => {
             router.push(`/customers/view/${customerId}`);
             reset();
-          }, 2000);
+          }, 1000);
         }
       });
     });

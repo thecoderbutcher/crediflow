@@ -4,7 +4,7 @@ import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useState, useTransition } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { newPassword } from '../action/new-password';
 import { NewPasswordSchema } from '@/schema';
 import { FormSuccess } from '../../components/form-success';
@@ -14,11 +14,12 @@ const NewPasswordForm = () => {
   const token = searchParams.get('token');
   const [error, setError] = useState<string | undefined>('');
   const [success, setSuccess] = useState<string | undefined>('');
-
+  const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm<z.infer<typeof NewPasswordSchema>>({
@@ -35,8 +36,16 @@ const NewPasswordForm = () => {
 
     startTransition(() => {
       newPassword(values, token).then(data => {
-        setError(data?.error);
-        setSuccess(data?.success);
+        if(data.error){
+          setError(data?.error);
+        }
+        else{
+          setSuccess(data?.success);
+          setTimeout(() => {
+            router.push(`/login`);
+            reset();
+          }, 1000);
+        }
       });
     });
   };
