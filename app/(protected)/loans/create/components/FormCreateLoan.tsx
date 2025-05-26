@@ -48,7 +48,7 @@ const FormCreateLoan = ({ loanType, paymentType }: FormCreateLoanProps) => {
           setError(data.error);
         } else {
           setSuccess(data.success);
-          createInstallments(customerId);
+          createInstallments(Number(data.data));
           setTimeout(() => {
             router.push(`/customers/view/${customerId}`);
             reset();

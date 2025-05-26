@@ -60,19 +60,12 @@ export const create = async (values: z.infer<typeof LoanSchema>, customerId: str
   };
 
   try {
-    await db.loan.create({ data: loanData });
-    return { success: 'Préstamo creado con éxito' };
+    const response = await db.loan.create({ data: loanData });
+    return { data: response.id, success: 'Préstamo creado con éxito' };
   }
-  catch { return { error: 'Error al crear el préstamo'} }
+  catch { return { error: 'Error al crear el préstamo' } }
 }
 
-export const getLoanByCustomerID = async (id: string) => {
-  return await db.loan.findFirstOrThrow({
-    where: {
-      customerId: id
-    },
-    orderBy: {
-      createdAt: 'desc'
-    }
-  })
+export const getLoanByID = async (loanId: number) => {
+  return await db.loan.findUnique({ where: { id: loanId } })
 }

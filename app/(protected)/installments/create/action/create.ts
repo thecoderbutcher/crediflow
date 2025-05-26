@@ -1,6 +1,6 @@
 'use server'
 import { db } from "@/lib/db";
-import { getLoanByCustomerID } from "@/app/(protected)/loans/create/action/create"
+import { getLoanByID } from "@/app/(protected)/loans/create/action/create"
 
 interface InstallmentData {
   loanId: number
@@ -9,8 +9,8 @@ interface InstallmentData {
   expirationDate: Date
 }
 
-export const createInstallments = async (customerId: string) => {
-  const { id, amountWithInstallments, totalInstallments, paymentDate, paymentFrequencyId } = await getLoanByCustomerID(customerId)
+export const createInstallments = async (loanId: number) => {
+  const { id, amountWithInstallments, totalInstallments, paymentDate, paymentFrequencyId } = await getLoanByID(loanId)
   const installmentAmount = Math.ceil(amountWithInstallments / totalInstallments);
 
   for (let i = 0; i < totalInstallments; i++) {
