@@ -30,9 +30,12 @@ export const create = async (values: z.infer<typeof LoanSchema>, customerId: str
     let result = 0;
     switch (Number(loanTypeId)) {
       case 1:
-        result = (amount + (amount * (interest / 100) * totalInstallments))
+        result = (amount + (amount * (interest / 100)))
         break;
       case 2:
+        result = (amount + (amount * (interest / 100) * totalInstallments))
+        break;
+      case 3:
         const amortization = amount / totalInstallments;
         let rest = amount;
         for (let i = 1; i <= totalInstallments; i++) {
@@ -40,7 +43,7 @@ export const create = async (values: z.infer<typeof LoanSchema>, customerId: str
           rest -= amortization;
         }
         break;
-      case 3:
+      case 4:
         result = amount * Math.pow(1 + (interest / 100), totalInstallments);
         break;
     }
