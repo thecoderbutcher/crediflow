@@ -6,7 +6,7 @@ import { MdModeEdit, MdBlock } from 'react-icons/md';
 import { useCustomersStore } from '../../store/customerStore';
 import { useEffect, useState } from 'react';
 import ConfirmModal from '@/app/(protected)/components/ConfirmModal';
-import { blockCustomer, unblockCustomer } from '../action/view'; 
+import { blockCustomer, unblockCustomer } from '../action/view';
 interface Customer {
   customer: {
     id: string;
@@ -57,7 +57,7 @@ const Profile = ({ customer }: Customer) => {
   };
 
   return (
-    <div className="flex flex-col gap-2 bg-light px-4 py-2 rounded-b-4xl shadow-md">
+    <div className="flex flex-col gap-2 bg-light px-4 py-2 rounded-b-2xl shadow-md">
       <div className="flex gap-2 items-start justify-between">
         <div className="flex items-start gap-2 h-full w-full">
           <div className="bg-gray-300 h-full px-4 py-7 rounded-md">
