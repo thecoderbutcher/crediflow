@@ -18,7 +18,7 @@ const Topbar = () => {
 
   return (
     <ul className="flex gap-2 px-2 w-full items-center text-2xl">
-      <li className="bg-darkText border border-secondary/20 shadow-md px-2 py-2 rounded-md">
+      <li className="bg-darkText border border-secondary/20 shadow-secondary/20 shadow-md px-2 py-2 rounded-md">
         <Link href="/employees/create">
           <FaUserPlus />
         </Link>
@@ -27,7 +27,7 @@ const Topbar = () => {
         <Search />
       </li>
       <li
-        className="bg-darkText border border-secondary/20 shadow-md px-2 py-2 rounded-md"
+        className="bg-darkText border border-secondary/20 shadow-secondary/20 shadow-md px-2 py-2 rounded-md"
         onClick={() => handleToggleOrderName()}
       >
         {!isAlphaFilter ? (

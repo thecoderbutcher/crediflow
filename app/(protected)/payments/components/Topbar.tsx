@@ -8,7 +8,7 @@ const Topbar = () => {
       <li className="w-full">
         <Search />
       </li>
-      <li className="bg-darkText border border-secondary/20 shadow-md px-2 py-2 rounded-md">
+      <li className="bg-darkText border border-secondary/20 shadow-secondary/20 shadow-md px-2 py-2 rounded-md">
         <LuCalendarArrowUp />
       </li>
     </ul>

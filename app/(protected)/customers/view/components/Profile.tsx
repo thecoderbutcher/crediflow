@@ -57,7 +57,7 @@ const Profile = ({ customer }: Customer) => {
   };
 
   return (
-    <div className="flex flex-col gap-2 bg-light px-4 py-2 rounded-b-2xl shadow-md">
+    <div className="flex flex-col gap-2 bg-light px-4 py-2 rounded-b-2xl shadow-secondary/20 shadow-md">
       <div className="flex gap-2 items-start justify-between">
         <div className="flex items-start gap-2 h-full w-full">
           <div className="bg-gray-300 h-full px-4 py-7 rounded-md">
@@ -79,15 +79,15 @@ const Profile = ({ customer }: Customer) => {
         </div>
         {status && (
           <div className="flex flex-col gap-2 ">
-            <div className="bg-darkText border border-secondary p-1 rounded-md shadow-md">
+            <div className="bg-darkText border border-secondary p-1 rounded-md shadow-secondary/20 shadow-md">
               <a href={`https://wa.me/${customer?.phone}`}>
                 <FaWhatsapp className="text-success" />
               </a>
             </div>
-            <div className="bg-darkText border border-secondary p-1 rounded-md shadow-md">
+            <div className="bg-darkText border border-secondary p-1 rounded-md shadow-secondary/20 shadow-md">
               <MdModeEdit className=" " />
             </div>
-            <div className="bg-darkText border border-secondary p-1 rounded-md shadow-md">
+            <div className="bg-darkText border border-secondary p-1 rounded-md shadow-secondary/20 shadow-md">
               <MdBlock
                 className="text-danger/80"
                 onClick={() => handleBlockButton()}
@@ -100,13 +100,13 @@ const Profile = ({ customer }: Customer) => {
         {status ? (
           <Link
             href={'/loans/create'}
-            className="flex items-center bg-primary gap-1 text-darkText border border-primary px-2 py-1 rounded-lg shadow-md"
+            className="flex items-center bg-primary gap-1 text-darkText border border-primary px-2 py-1 rounded-lg shadow-secondary/20 shadow-md"
           >
             <FaMoneyBillTransfer className="text-2xl font-extrabold" />
             <p>Agregar prestamo</p>
           </Link>
         ) : (
-          <button className="flex items-center bg-danger gap-1 text-darkText border border-danger px-2 py-1 rounded-lg shadow-md" onClick={handleUnlockCustomer}>
+          <button className="flex items-center bg-danger gap-1 text-darkText border border-danger px-2 py-1 rounded-lg shadow-secondary/20 shadow-md" onClick={handleUnlockCustomer}>
             <FaUserLock className="text-2xl font-extrabold" />
             <p>Desbloquear cliente</p>
           </button>

@@ -13,7 +13,7 @@ const Topbar = () => {
       </li>
 
       <li
-        className="bg-darkText border border-primary/50 shadow-md px-2 py-2 rounded-md"
+        className="bg-darkText border border-primary/50 shadow-secondary/20 shadow-md px-2 py-2 rounded-md"
         onClick={() => setIsDateFilter(!isDateFilter)}
       >
         {!isDateFilter ? <LuCalendarArrowDown /> : <LuCalendarArrowUp />}

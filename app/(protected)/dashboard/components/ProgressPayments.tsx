@@ -1,5 +1,5 @@
 import { FaCalendarDay, FaBell } from 'react-icons/fa';
-import { 
+import {
   FaArrowUp,
   FaArrowDown,
   FaArrowRight,
@@ -7,7 +7,7 @@ import {
 
 const ProgressPayments = () => {
   return (
-    <div className="flex flex-col gap-4 text-light bg-gradient-to-tl from-[#101b3b] via-[#212d5d] to-[#303d78] px-4 py-8 rounded-b-2xl shadow-primary/40 shadow-lg">
+    <div className="flex flex-col gap-4 text-light bg-gradient-to-tl from-[#101b3b] via-[#212d5d] to-[#303d78] px-4 py-8 rounded-b-2xl shadow-secondary/60 shadow-lg">
       <div className="flex justify-between items-center pb-1">
         <div className="flex flex-col">
           <p className="text-xs font-light">Bienvenido</p>
@@ -20,9 +20,9 @@ const ProgressPayments = () => {
         </div>
       </div>
       <div className="flex items-center justify-between ">
-        <p>Progreso de cobros</p>
+        <p className='font-semibold text-lg'>Progreso de cobros</p>
         <div className="flex gap-2">
-          <div className="px-2 py-1 border border-primary shadow-md rounded-md bg-primary text-white">
+          <div className="text-white">
             <FaCalendarDay />
           </div>
         </div>

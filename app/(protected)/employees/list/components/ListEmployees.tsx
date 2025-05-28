@@ -32,7 +32,7 @@ const ListEmployees = ({ listEmployee }: { listEmployee: User[] }) => {
         <div key={index} className="px-1 mt-2 w-full">
           <Link
             href={`/employees/view/${employee.id}`}
-            className="flex items-center justify-between gap-2 bg-white px-4 py-2 rounded-lg shadow-md"
+            className="flex items-center justify-between gap-2 bg-white px-4 py-2 rounded-lg shadow-secondary/20 shadow-md"
           >
             <div className="flex gap-2 items-center">
               <div className="bg-gray-300 p-1 rounded-md">

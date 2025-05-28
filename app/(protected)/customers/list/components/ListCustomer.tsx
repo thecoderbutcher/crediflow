@@ -33,7 +33,7 @@ const ListCustomer = ({ listCustomer }: { listCustomer: Customer[] }) => {
         <div key={index} className="px-1 mt-2 w-full">
           <Link
             href={`/customers/view/${customer.id}`}
-            className="flex items-center justify-between gap-2 bg-white px-4 py-2 rounded-lg shadow-md"
+            className="flex items-center justify-between gap-2 bg-white px-4 py-2 rounded-lg shadow-secondary/20 shadow-md"
           >
             <div className="flex gap-2 items-center">
               <div className="bg-gray-300 p-1 rounded-md">
@@ -55,9 +55,9 @@ const ListCustomer = ({ listCustomer }: { listCustomer: Customer[] }) => {
               <ul className="flex gap-2 items-center justify-end text-xl">
                 <li className="">
                   {customer.statusPay ? (
-                    <FaCircleCheck className="text-success/60 text-base" />
+                    <FaCircleCheck className="text-success/80 text-base" />
                   ) : (
-                    <FaTriangleExclamation className="text-danger/60 text-base" />
+                    <FaTriangleExclamation className="text-warning text-base" />
                   )}
                 </li>
                 <li className="">

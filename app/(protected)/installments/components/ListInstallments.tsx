@@ -35,7 +35,7 @@ const ListInstallments = ({
       {filteredInstallments.map((installment, index) => (
         <div
           key={index}
-          className={`relative z-0 flex justify-between items-center bg-darkText py-2 px-4 rounded-lg shadow-md border-l-4 ${installment.statusId == 1 ? 'border-l-warning' : installment.statusId == 2 ? 'border-l-success' : 'border-l-danger'}`}
+          className={`relative z-0 flex justify-between items-center bg-darkText py-2 px-4 rounded-lg shadow-secondary/20 shadow-md border-l-4 ${installment.statusId == 1 ? 'border-l-warning' : installment.statusId == 2 ? 'border-l-success' : 'border-l-danger'}`}
         >
           <div
             className={`absolute top-0 -left-1 rounded-full w-4 h-4 text-center flex items-center justify-center ${installment.statusId == 1 ? 'bg-warning' : installment.statusId == 2 ? 'bg-success' : 'bg-danger'} text-xs font-semibold text-white`}

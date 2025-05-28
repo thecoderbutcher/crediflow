@@ -2,7 +2,7 @@ import { IoIosSearch } from 'react-icons/io';
 const Search = () => {
   return (
     <form>
-      <div className="flex w-full items-center rounded-md bg-darkText border px-2 border-primary/50 shadow-md">
+      <div className="flex w-full items-center rounded-md bg-darkText border px-2 border-primary/50 shadow-secondary/20 shadow-md">
         <input
           type="text"
           placeholder="Buscar prestamo"

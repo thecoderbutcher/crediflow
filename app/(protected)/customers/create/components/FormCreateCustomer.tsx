@@ -70,7 +70,7 @@ const FormCreateCustomer = () => {
   };
   return (
     <form
-      className="flex flex-col gap-8 py-8 px-4 bg-darkText shadow-md items-center pt-8"
+      className="flex flex-col gap-8 py-8 px-4 bg-darkText shadow-secondary/20 shadow-md items-center pt-8"
       onSubmit={handleSubmit(onSubmit)}
     >
       <FormGroup
@@ -180,7 +180,7 @@ const FormCreateCustomer = () => {
       </FormGroup>
       <FormSuccess message={success} />
       <FormError message={error} />
-      <div className="flex w-full items-center gap-2 shadow-md">
+      <div className="flex w-full items-center gap-2 shadow-secondary/20 shadow-md">
         <button
           type="submit"
           className="bg-primary text-white py-2 w-full text-center rounded-md"

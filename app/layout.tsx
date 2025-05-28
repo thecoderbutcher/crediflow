@@ -7,8 +7,8 @@ const robotoCondensed = Roboto_Condensed({
 });
 
 export const metadata: Metadata = {
-  title: 'MCD Detailing',
-  description: 'Detailing de autos a mano',
+  title: 'Crediflow',
+  description: 'Administración de prestamo de dinero',
 };
 
 export default function RootLayout({

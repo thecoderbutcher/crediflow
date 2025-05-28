@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Profile = ({employee}: User) => {
   return (
-    <div className="flex flex-col gap-2 bg-light px-4 py-2 rounded-b-4xl shadow-md">
+    <div className="flex flex-col gap-2 bg-light px-4 py-2 rounded-b-4xl shadow-secondary/20 shadow-md">
       <div className="flex gap-2 items-start justify-between">
         <div className="flex items-start gap-2 h-full w-full">
           <div className="bg-gray-300 h-full px-4 py-7 rounded-md">
