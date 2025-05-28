@@ -4,13 +4,13 @@ import { FaTriangleExclamation } from 'react-icons/fa6';
 const ErrorAuth = () => {
   return (
     <AuthCardWrapper
-      headerLabel="Somethings went wrong"
+      headerLabel="Advertencia"
       backLabel="Volver"
-      backLink="/login" 
+      backLink="/login"
     >
       <p className="flex items-center justify-center text-xl gap-x-2">
         <FaTriangleExclamation className="text-warning" />
-        Something went wrong
+        Upps! Algo salió mal
       </p>
     </AuthCardWrapper>
   );

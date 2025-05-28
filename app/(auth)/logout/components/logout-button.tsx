@@ -1,18 +1,18 @@
-import { signOut } from '@/auth';
-import { FaArrowRightToBracket } from "react-icons/fa6";
-const LogoutButton = async () => {
+'use client'
+import { logout } from '../action/logout';
+import { FaArrowRightFromBracket } from 'react-icons/fa6';
+
+const LogoutButton = () => {
   return (
-    <form
-      action={async () => {
-        'use server';
-        await signOut();
+    <button
+      onClick={() => {
+        logout();
       }}
+      className="flex items-center justify-center gap-2 bg-darkText shadow-md py-2 px-4 rounded-md"
     >
-      <button type="submit" className='flex items-center justify-center gap-2 bg-darkText shadow-md py-2 px-4 rounded-md'>
-        <FaArrowRightToBracket/>
-        Logout
-        </button>
-    </form>
+      <FaArrowRightFromBracket />
+      Logout
+    </button>
   );
 };
 

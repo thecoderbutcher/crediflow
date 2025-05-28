@@ -2,7 +2,8 @@
 
 @theme {
   --color-primary: #7380ec;
-  --color-secondary: #1f2937;
+  --color-secondary: #101b3b;
+  --color-bgColor: #e9f0f5;
   --color-accent: #67e8f9;
   --color-light: #f3f4f6;
   --color-darkText: #ffffff;
@@ -13,7 +14,7 @@
 }
 
 body {
-  @apply bg-secondary/10 text-secondary/80;
+  @apply bg-bgColor text-secondary/80;
 }
 
 input {

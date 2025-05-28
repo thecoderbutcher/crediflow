@@ -1,5 +1,5 @@
 import Header from '@/app/(protected)/components/Header';
-import LoanInfo from '../components/LoanInfo'; 
+import LoanInfo from '../components/LoanInfo';
 import ListInstallments from '@/app/(protected)/installments/components/ListInstallments';
 import { viewInstallments } from '@/app/(protected)/installments/action/installments';
 import { viewLoan } from '../action/view';

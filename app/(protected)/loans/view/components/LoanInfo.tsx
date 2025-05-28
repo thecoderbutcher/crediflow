@@ -34,6 +34,14 @@ const LoanInfo = ({ loan }: { loan: Loan }) => {
           </div>
         </div>
       </div>
+      <div className='flex gap-4 justify-around'>
+        <button className='bg-accent px-2 py-1 rounded-md shadow-md'>
+          Dar por Perdido
+        </button>
+        <button className='bg-accent px-2 py-1 rounded-md shadow-md'>
+          Aplicar Interes
+        </button>
+      </div>
       <div className="flex items-center justify-center border-t  border-gray-200">
         <FilterInstallments />
       </div>
