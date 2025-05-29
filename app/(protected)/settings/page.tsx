@@ -1,12 +1,14 @@
 import React from 'react'
 import Header from '../components/Header'
-import LogoutButton from '@/app/(auth)/logout/components/logout-button'
+import Profile from './components/Profile'
+import Settings from './components/Settings'
 
 const page = () => {
   return (
-    <div className='flex flex-col justify-center items-center gap-4'>
+    <div className='flex flex-col justify-center items-center '>
       <Header title='Configuracion' url='/dashboard'/>
-      <LogoutButton />
+      <Profile />
+      <Settings />
     </div>
   )
 }

@@ -9,7 +9,7 @@ import ProgressPayments from './components/ProgressPayments';
 const page = async () => {
   const labels = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
   return (
-    <div className="flex flex-col gap-4 space-y-2">
+    <div className="flex flex-col gap-4">
       <ProgressPayments />
       <div className='flex flex-col gap-4 px-4'>
         <LastestTransactions />
