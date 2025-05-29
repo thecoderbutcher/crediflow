@@ -10,7 +10,7 @@ const Services = () => {
   ];
 
   return (
-    <section className="flex flex-col items-center justify-center gap-4 py-16 px-6 bg-[#f8fafc] text-[#0f172a]">
+    <section className="flex flex-col items-center justify-center gap-4 py-16 px-6 bg-[#f8fafc] text-[#0f172a]" id='services'>
       <h2 className="text-4xl font-bold mb-8">Nuestros Servicios</h2>
       <div className='flex flex-col gap-4 justify-around lg:flex-row'>
         <div className='flex relative'>

@@ -42,3 +42,10 @@ select {
 button {
   @apply cursor-pointer;
 }
+
+.gradient-r {
+  @apply bg-gradient-to-tl from-[#101b3b] via-[#212d5d] to-[#303d78] transition-all duration-200;
+}
+.gradient-l:hover {
+  @apply bg-gradient-to-br from-[#101b3b] via-[#212d5d] to-[#303d78] transition-all duration-200;
+}
