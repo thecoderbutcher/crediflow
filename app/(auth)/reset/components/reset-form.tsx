@@ -6,8 +6,8 @@ import { FormError } from '../../components/form-error';
 import { FormSuccess } from '../../components/form-success';
 import { ResetSchema } from '@/schema';
 import { useForm } from 'react-hook-form';
-import { resetPassword } from '../action';
 import { useRouter } from 'next/navigation';
+import { resetPassword } from '../action';
 
 const ResetForm = () => {
   const [error, setError] = useState<string | undefined>('');
